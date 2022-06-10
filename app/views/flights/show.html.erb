@@ -1,0 +1,26 @@
+<p>Vuelo: <%= @flight.id %></p>
+
+<p>Origen: <%= @flight.origin %></p>
+
+<p>Destino: <%= @flight.destiny %></p>
+
+<p>Fecha: <%= @flight.date %></p>
+
+<p>Fecha: <%= @flight.time.strftime("%I:%M%p") %></p>
+
+<p>Asientos: <%= @flight.seats.each do |seat| %>
+    <li>
+      <%= seat.row %><%= seat.column%>
+      <%= seat.disponibility %>
+    </li>
+  <% end %>
+</p>
+
+<%= link_to "Reservar", new_booking_path %>
+
+<ul>
+  <li><%= link_to "Destroy", flight_path(@flight), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
+</ul>

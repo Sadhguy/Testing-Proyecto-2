@@ -1,0 +1,39 @@
+<h1>New flight</h1>
+
+<%= form_with model: @flight do |form| %>
+  <div>
+    <%= form.label :Origen %><br>
+    <%= form.text_field :origin %>
+    <% @flight.errors.full_messages_for(:origin).each do |message|%>
+        <div><%= message %></div>
+      <% end %>
+  </div>
+
+  <div>
+    <%= form.label :Destino %><br>
+    <%= form.text_field :destiny %>
+    <% @flight.errors.full_messages_for(:destiny).each do |message|%>
+        <div><%= message %></div>
+      <% end %>
+  </div>
+
+  <div>
+    <%= form.label :Fecha %><br>
+    <%= form.date_field :date %>
+    <% @flight.errors.full_messages_for(:date).each do |message|%>
+        <div><%= message %></div>
+      <% end %>
+  </div>
+
+  <div>
+    <%= form.label :Hora %><br>
+    <%= form.time_field :time %>
+    <% @flight.errors.full_messages_for(:time).each do |message|%>
+        <div><%= message %></div>
+      <% end %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

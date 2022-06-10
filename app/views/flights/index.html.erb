@@ -1,0 +1,15 @@
+
+<h1>Flights</h1>
+
+<ul>
+  <% @flights.each do |flight| %>
+    <li>
+    <a href="/flights/<%= flight.id %>">
+      Vuelo <%= flight.origin %>-<%= flight.destiny %>
+      <%= flight.date %>
+      <%= flight.time.strftime("%I:%M%p") %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "New Flight", new_flight_path %>
