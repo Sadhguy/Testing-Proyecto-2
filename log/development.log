@@ -10431,5 +10431,950 @@ Processing by FlightsController#show as HTML
   Rendered flights/show.html.erb within layouts/application (Duration: 76.1ms | Allocations: 15806)
   Rendered layout layouts/application.html.erb (Duration: 82.7ms | Allocations: 18269)
 Completed 200 OK in 105ms (Views: 87.2ms | ActiveRecord: 3.2ms | Allocations: 19760)
+  [1m[35m (3.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2022-06-10 15:28:44 -0400
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by FlightsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  Rendered flights/index.html.erb within layouts/application (Duration: 40.8ms | Allocations: 6202)
+  Rendered layout layouts/application.html.erb (Duration: 41.5ms | Allocations: 6290)
+Completed 500 Internal Server Error in 101ms (ActiveRecord: 0.0ms | Allocations: 15619)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `list_flights_path' for #<ActionView::Base:0x0000000000b770>
+Did you mean?  edit_flight_path):
+    2: <h1>Flights</h1>
+    3: 
+    4: <div class="flex justify-end mb-1">
+    5:   <%= form_with url: list_flights_path, method: :get, data: { controller: "search-form", search_form_target: "form", turbo_frame: "flights" } do |form| %>
+    6:     <%= form.text_field :destiny,
+    7:       placeholder: "Search by destiny",
+    8:       class: "border border-blue-500 rounded p-2",
+  
+app/views/flights/index.html.erb:5
+Started GET "/" for ::1 at 2022-06-10 15:41:28 -0400
+Processing by FlightsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/views/flights/index.html.erb:5
+  [1m[36mFlight Load (2.1ms)[0m  [1m[34mSELECT "flights".* FROM "flights"[0m
+  ↳ app/views/flights/index.html.erb:5
+  Rendered flights/index.html.erb within layouts/application (Duration: 18.5ms | Allocations: 6884)
+  Rendered layout layouts/application.html.erb (Duration: 354.0ms | Allocations: 128334)
+Completed 200 OK in 362ms (Views: 356.8ms | ActiveRecord: 3.6ms | Allocations: 131111)
+
+
+Started GET "/" for ::1 at 2022-06-10 15:54:31 -0400
+Processing by FlightsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  Rendered flights/index.html.erb within layouts/application (Duration: 92.2ms | Allocations: 9934)
+  Rendered layout layouts/application.html.erb (Duration: 92.9ms | Allocations: 10014)
+Completed 500 Internal Server Error in 109ms (Allocations: 11021)
+
+
+  
+ActionView::Template::Error (undefined method `errors' for nil:NilClass):
+     5:   <div>
+     6:     <%= form.label :Origen %><br>
+     7:     <%= form.text_field :origin %>
+     8:     <% @flight.errors.full_messages_for(:origin).each do |message|%>
+     9:         <div><%= message %></div>
+    10:       <% end %>
+    11:   </div>
+  
+app/views/flights/index.html.erb:8
+app/views/flights/index.html.erb:4
+Started GET "/" for ::1 at 2022-06-10 16:06:08 -0400
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by FlightsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  Rendered flights/index.html.erb within layouts/application (Duration: 52.8ms | Allocations: 5621)
+  Rendered layout layouts/application.html.erb (Duration: 53.3ms | Allocations: 5709)
+Completed 500 Internal Server Error in 112ms (ActiveRecord: 0.0ms | Allocations: 13612)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `list_flights_path' for #<ActionView::Base:0x0000000000b860>
+Did you mean?  edit_flight_path):
+    2: <h1>Flights</h1>
+    3: 
+    4: <div class="flex justify-end mb-1">
+    5:   <%= form_with url: list_flights_path, method: :get, data: { controller: "search-form", search_form_target: "form", turbo_frame: "flights" } do |form| %>
+    6:     <%= form.text_field :destiny,
+    7:       placeholder: "Search by destiny",
+    8:       class: "border border-blue-500 rounded p-2",
+  
+app/views/flights/index.html.erb:5
+Started GET "/" for ::1 at 2022-06-10 16:06:54 -0400
+Processing by FlightsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/views/flights/index.html.erb:19
+  [1m[36mFlight Load (0.9ms)[0m  [1m[34mSELECT "flights".* FROM "flights"[0m
+  ↳ app/views/flights/index.html.erb:19
+  Rendered flights/index.html.erb within layouts/application (Duration: 24.7ms | Allocations: 7675)
+  Rendered layout layouts/application.html.erb (Duration: 162.7ms | Allocations: 45488)
+Completed 200 OK in 170ms (Views: 164.3ms | ActiveRecord: 10.6ms | Allocations: 47987)
+
+
+Started GET "/flights/list?destiny=H" for ::1 at 2022-06-10 16:07:00 -0400
+Processing by FlightsController#show as HTML
+  Parameters: {"destiny"=>"H", "id"=>"list"}
+  [1m[36mFlight Load (4.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/flights_controller.rb:7:in `show'
+Completed 404 Not Found in 28ms (ActiveRecord: 4.2ms | Allocations: 2721)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Flight with 'id'=list):
+  
+app/controllers/flights_controller.rb:7:in `show'
+Started GET "/flights/list?destiny=Hola" for ::1 at 2022-06-10 16:07:00 -0400
+Processing by FlightsController#show as HTML
+  Parameters: {"destiny"=>"Hola", "id"=>"list"}
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/flights_controller.rb:7:in `show'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.2ms | Allocations: 889)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Flight with 'id'=list):
+  
+app/controllers/flights_controller.rb:7:in `show'
+Started GET "/flights/list?destiny=Hola" for ::1 at 2022-06-10 16:07:01 -0400
+Processing by FlightsController#show as HTML
+  Parameters: {"destiny"=>"Hola", "id"=>"list"}
+  [1m[36mFlight Load (0.1ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/flights_controller.rb:7:in `show'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.1ms | Allocations: 891)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Flight with 'id'=list):
+  
+app/controllers/flights_controller.rb:7:in `show'
+Started GET "/flights/list?destiny=Hola" for ::1 at 2022-06-10 16:07:05 -0400
+Processing by FlightsController#show as HTML
+  Parameters: {"destiny"=>"Hola", "id"=>"list"}
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/flights_controller.rb:7:in `show'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.2ms | Allocations: 904)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Flight with 'id'=list):
+  
+app/controllers/flights_controller.rb:7:in `show'
+Started GET "/" for ::1 at 2022-06-10 16:08:21 -0400
+Processing by FlightsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/views/flights/index.html.erb:19
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights"[0m
+  ↳ app/views/flights/index.html.erb:19
+  Rendered flights/index.html.erb within layouts/application (Duration: 14.0ms | Allocations: 4044)
+  Rendered layout layouts/application.html.erb (Duration: 42.0ms | Allocations: 19024)
+Completed 200 OK in 51ms (Views: 44.5ms | ActiveRecord: 3.2ms | Allocations: 21490)
+
+
+Started GET "/" for ::1 at 2022-06-10 16:12:50 -0400
+Processing by FlightsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/views/flights/index.html.erb:16
+  [1m[36mFlight Load (0.5ms)[0m  [1m[34mSELECT "flights".* FROM "flights"[0m
+  ↳ app/views/flights/index.html.erb:16
+  Rendered flights/index.html.erb within layouts/application (Duration: 24.9ms | Allocations: 6497)
+  Rendered layout layouts/application.html.erb (Duration: 55.2ms | Allocations: 21371)
+Completed 200 OK in 70ms (Views: 58.7ms | ActiveRecord: 2.7ms | Allocations: 24107)
+
+
+Started POST "/flights/list" for ::1 at 2022-06-10 16:12:55 -0400
+Processing by FlightsController#list as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "destiny"=>"Hola", "commit"=>"Buscar"}
+  [1m[36mFlight Load (0.1ms)[0m  [1m[34mSELECT "flights".* FROM "flights"[0m
+  ↳ app/controllers/flights_controller.rb:16:in `puts'
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.1ms | Allocations: 2430)
+
+
+  
+ActionView::MissingTemplate (Missing partial flights/_flights, application/_flights with {:locale=>[:en], :formats=>[:turbo_stream, :html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder]}.
+
+Searched in:
+  * "/home/jbulness/Testing-Proyecto-2/app/views"
+  * "/home/jbulness/.rvm/gems/ruby-3.0.0/gems/actiontext-7.0.3/app/views"
+  * "/home/jbulness/.rvm/gems/ruby-3.0.0/gems/actionmailbox-7.0.3/app/views"
+
+Did you mean?  action_text/attachables/missing_attachable
+               action_text/contents/content
+               active_storage/blobs/blob
+               layouts/action_text/contents/content
+               action_text/attachment_galleries/attachment_gallery
+               action_text/attachables/remote_image):
+  
+app/controllers/flights_controller.rb:19:in `list'
+Started GET "/" for ::1 at 2022-06-10 16:13:59 -0400
+Processing by FlightsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.9ms)[0m  [1m[34mSELECT "flights".* FROM "flights"[0m
+  ↳ app/views/flights/index.html.erb:16
+  Rendered flights/index.html.erb within layouts/application (Duration: 16.7ms | Allocations: 2673)
+  Rendered layout layouts/application.html.erb (Duration: 52.8ms | Allocations: 16185)
+Completed 200 OK in 59ms (Views: 56.0ms | ActiveRecord: 0.9ms | Allocations: 17213)
+
+
+Started GET "/" for ::1 at 2022-06-10 16:15:03 -0400
+Processing by FlightsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/views/flights/index.html.erb:16
+  [1m[36mFlight Load (1.0ms)[0m  [1m[34mSELECT "flights".* FROM "flights"[0m
+  ↳ app/views/flights/index.html.erb:16
+  Rendered flights/index.html.erb within layouts/application (Duration: 15.3ms | Allocations: 4713)
+  Rendered layout layouts/application.html.erb (Duration: 39.9ms | Allocations: 17917)
+Completed 200 OK in 50ms (Views: 42.7ms | ActiveRecord: 2.4ms | Allocations: 20381)
+
+
+Started POST "/flights/list" for ::1 at 2022-06-10 16:15:07 -0400
+Processing by FlightsController#list as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "destiny"=>"Hola", "commit"=>"Buscar"}
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.0ms | Allocations: 3394)
+
+
+  
+NameError (undefined local variable or method `flights' for #<FlightsController:0x0000000001ef28>
+Did you mean?  @flights):
+  
+app/controllers/flights_controller.rb:16:in `list'
+Started GET "/" for ::1 at 2022-06-10 16:15:20 -0400
+Processing by FlightsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/views/flights/index.html.erb:16
+  [1m[36mFlight Load (0.1ms)[0m  [1m[34mSELECT "flights".* FROM "flights"[0m
+  ↳ app/views/flights/index.html.erb:16
+  Rendered flights/index.html.erb within layouts/application (Duration: 9.7ms | Allocations: 4712)
+  Rendered layout layouts/application.html.erb (Duration: 27.3ms | Allocations: 18019)
+Completed 200 OK in 34ms (Views: 29.2ms | ActiveRecord: 1.2ms | Allocations: 20479)
+
+
+Started POST "/flights/list" for ::1 at 2022-06-10 16:15:22 -0400
+Processing by FlightsController#list as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "destiny"=>"Hola", "commit"=>"Buscar"}
+  [1m[36mFlight Load (1.8ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE (destiny ilike '%Hola%')[0m
+  ↳ app/controllers/flights_controller.rb:17:in `puts'
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 1.8ms | Allocations: 1731)
+
+
+  
+ActiveRecord::StatementInvalid (SQLite3::SQLException: near "ilike": syntax error):
+  
+app/controllers/flights_controller.rb:17:in `puts'
+app/controllers/flights_controller.rb:17:in `puts'
+app/controllers/flights_controller.rb:17:in `list'
+Started GET "/" for ::1 at 2022-06-10 16:15:43 -0400
+Processing by FlightsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/views/flights/index.html.erb:16
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights"[0m
+  ↳ app/views/flights/index.html.erb:16
+  Rendered flights/index.html.erb within layouts/application (Duration: 10.9ms | Allocations: 4734)
+  Rendered layout layouts/application.html.erb (Duration: 33.0ms | Allocations: 18040)
+Completed 200 OK in 41ms (Views: 35.1ms | ActiveRecord: 1.3ms | Allocations: 20503)
+
+
+Started POST "/flights/list" for ::1 at 2022-06-10 16:15:45 -0400
+Processing by FlightsController#list as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "destiny"=>"Hola", "commit"=>"Buscar"}
+No template found for FlightsController#list, rendering head :no_content
+Completed 204 No Content in 2ms (ActiveRecord: 0.0ms | Allocations: 682)
+
+
+Started POST "/flights/list" for ::1 at 2022-06-10 16:16:24 -0400
+Processing by FlightsController#list as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "destiny"=>"Hola", "commit"=>"Buscar"}
+  Rendering layout layouts/application.html.erb
+  Rendering flights/list.html.erb within layouts/application
+  [1m[36mFlight Load (1.4ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE (destiny ilike '%Hola%')[0m
+  ↳ app/views/flights/list.html.erb:19
+  Rendered flights/list.html.erb within layouts/application (Duration: 7.2ms | Allocations: 3136)
+  Rendered layout layouts/application.html.erb (Duration: 8.1ms | Allocations: 3215)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 1.4ms | Allocations: 4517)
+
+
+  
+ActionView::Template::Error (SQLite3::SQLException: near "ilike": syntax error):
+    16: <% end %>
+    17: 
+    18: <ul>
+    19:   <% @flights.each do |flight| %>
+    20:     <li>
+    21:     <a href="/flights/<%= flight.id %>">
+    22:       Vuelo <%= flight.origin %>-<%= flight.destiny %>
+  
+app/views/flights/list.html.erb:19
+Started GET "/" for ::1 at 2022-06-10 16:17:07 -0400
+Processing by FlightsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/views/flights/index.html.erb:16
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights"[0m
+  ↳ app/views/flights/index.html.erb:16
+  Rendered flights/index.html.erb within layouts/application (Duration: 12.5ms | Allocations: 5074)
+  Rendered layout layouts/application.html.erb (Duration: 30.9ms | Allocations: 18586)
+Completed 200 OK in 39ms (Views: 32.6ms | ActiveRecord: 1.5ms | Allocations: 21102)
+
+
+Started POST "/flights/list" for ::1 at 2022-06-10 16:17:10 -0400
+Processing by FlightsController#list as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "destiny"=>"Hola", "commit"=>"Buscar"}
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."destiny" = ?[0m  [["destiny", "Hola"]]
+  ↳ app/controllers/flights_controller.rb:16:in `puts'
+  Rendering layout layouts/application.html.erb
+  Rendering flights/list.html.erb within layouts/application
+  Rendered flights/list.html.erb within layouts/application (Duration: 0.9ms | Allocations: 850)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | Allocations: 3050)
+Completed 200 OK in 10ms (Views: 6.7ms | ActiveRecord: 0.3ms | Allocations: 4172)
+
+
+Started POST "/flights/list" for ::1 at 2022-06-10 16:17:50 -0400
+Processing by FlightsController#list as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "destiny"=>"Chao", "commit"=>"Buscar"}
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."destiny" = ?[0m  [["destiny", "Chao"]]
+  ↳ app/controllers/flights_controller.rb:16:in `puts'
+  Rendering layout layouts/application.html.erb
+  Rendering flights/list.html.erb within layouts/application
+  Rendered flights/list.html.erb within layouts/application (Duration: 1.2ms | Allocations: 888)
+  Rendered layout layouts/application.html.erb (Duration: 12.7ms | Allocations: 3092)
+Completed 200 OK in 18ms (Views: 13.9ms | ActiveRecord: 0.2ms | Allocations: 4184)
+
+
+Started POST "/flights/list" for ::1 at 2022-06-10 16:24:18 -0400
+Processing by FlightsController#list as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "destiny"=>"Chao", "commit"=>"Buscar"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/flights_controller.rb:15:in `list'
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."destiny" = ?[0m  [["destiny", "Chao"]]
+  ↳ app/controllers/flights_controller.rb:16:in `puts'
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  Rendered flights/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 1416)
+  Rendered layout layouts/application.html.erb (Duration: 16.4ms | Allocations: 14702)
+Completed 200 OK in 30ms (Views: 18.3ms | ActiveRecord: 0.5ms | Allocations: 19902)
+
+
+Started POST "/flights/list" for ::1 at 2022-06-10 16:24:47 -0400
+Processing by FlightsController#list as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "destiny"=>"Chao", "commit"=>"Buscar"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/flights_controller.rb:16:in `list'
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."destiny" = ?[0m  [["destiny", "Chao"]]
+  ↳ app/controllers/flights_controller.rb:17:in `puts'
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  Rendered flights/index.html.erb within layouts/application (Duration: 1.4ms | Allocations: 1447)
+  Rendered layout layouts/application.html.erb (Duration: 16.2ms | Allocations: 14643)
+Completed 200 OK in 35ms (Views: 18.2ms | ActiveRecord: 1.8ms | Allocations: 20235)
+
+
+Started POST "/flights/list" for ::1 at 2022-06-10 16:27:56 -0400
+Processing by FlightsController#list as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "destiny"=>"Chao", "commit"=>"Buscar"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/flights_controller.rb:16:in `list'
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."destiny" = ?[0m  [["destiny", "Chao"]]
+  ↳ app/controllers/flights_controller.rb:17:in `puts'
+  Rendering layout layouts/application.html.erb
+  Rendering flights/list.html.erb within layouts/application
+  Rendered flights/list.html.erb within layouts/application (Duration: 1.8ms | Allocations: 911)
+  Rendered layout layouts/application.html.erb (Duration: 40.5ms | Allocations: 14226)
+Completed 200 OK in 60ms (Views: 43.0ms | ActiveRecord: 1.5ms | Allocations: 19852)
+
+
+Started GET "/" for ::1 at 2022-06-10 16:30:03 -0400
+Processing by FlightsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/views/flights/index.html.erb:16
+  [1m[36mFlight Load (0.5ms)[0m  [1m[34mSELECT "flights".* FROM "flights"[0m
+  ↳ app/views/flights/index.html.erb:16
+  Rendered flights/index.html.erb within layouts/application (Duration: 24.2ms | Allocations: 5008)
+  Rendered layout layouts/application.html.erb (Duration: 54.5ms | Allocations: 18500)
+Completed 200 OK in 68ms (Views: 58.0ms | ActiveRecord: 3.0ms | Allocations: 21247)
+
+
+Started POST "/flights" for ::1 at 2022-06-10 16:30:19 -0400
+Processing by FlightsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "destiny"=>"Hola", "commit"=>"Buscar"}
+Completed 400 Bad Request in 2ms (ActiveRecord: 0.0ms | Allocations: 738)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: flight):
+  
+app/controllers/flights_controller.rb:47:in `flight_params'
+app/controllers/flights_controller.rb:23:in `create'
+Started GET "/" for ::1 at 2022-06-10 16:30:19 -0400
+Processing by FlightsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.4ms)[0m  [1m[34mSELECT "flights".* FROM "flights"[0m
+  ↳ app/views/flights/index.html.erb:16
+  Rendered flights/index.html.erb within layouts/application (Duration: 15.2ms | Allocations: 2227)
+  Rendered layout layouts/application.html.erb (Duration: 23.2ms | Allocations: 4430)
+Completed 200 OK in 32ms (Views: 25.3ms | ActiveRecord: 0.4ms | Allocations: 4774)
+
+
+Started GET "/" for ::1 at 2022-06-10 16:30:37 -0400
+Processing by FlightsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.4ms)[0m  [1m[34mSELECT "flights".* FROM "flights"[0m
+  ↳ app/views/flights/index.html.erb:16
+  Rendered flights/index.html.erb within layouts/application (Duration: 13.6ms | Allocations: 2381)
+  Rendered layout layouts/application.html.erb (Duration: 30.7ms | Allocations: 5020)
+Completed 200 OK in 41ms (Views: 37.0ms | ActiveRecord: 0.4ms | Allocations: 6084)
+
+
+Started GET "/" for ::1 at 2022-06-10 16:35:58 -0400
+Processing by FlightsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/views/flights/index.html.erb:16
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights"[0m
+  ↳ app/views/flights/index.html.erb:16
+  Rendered flights/index.html.erb within layouts/application (Duration: 8.3ms | Allocations: 4432)
+  Rendered layout layouts/application.html.erb (Duration: 28.2ms | Allocations: 17925)
+Completed 200 OK in 36ms (Views: 29.8ms | ActiveRecord: 1.1ms | Allocations: 20391)
+
+
+Started GET "/flights?destiny=Hola&commit=Buscar" for ::1 at 2022-06-10 16:36:05 -0400
+Processing by FlightsController#index as HTML
+  Parameters: {"destiny"=>"Hola", "commit"=>"Buscar"}
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights"[0m
+  ↳ app/views/flights/index.html.erb:16
+  Rendered flights/index.html.erb within layouts/application (Duration: 4.3ms | Allocations: 1974)
+  Rendered layout layouts/application.html.erb (Duration: 9.0ms | Allocations: 4329)
+Completed 200 OK in 11ms (Views: 10.3ms | ActiveRecord: 0.2ms | Allocations: 4665)
+
+
+Started GET "/flights?destiny=Hola&commit=Buscar" for ::1 at 2022-06-10 16:36:49 -0400
+Processing by FlightsController#index as HTML
+  Parameters: {"destiny"=>"Hola", "commit"=>"Buscar"}
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/views/flights/index.html.erb:16
+  [1m[36mFlight Load (0.1ms)[0m  [1m[34mSELECT "flights".* FROM "flights"[0m
+  ↳ app/views/flights/index.html.erb:16
+  Rendered flights/index.html.erb within layouts/application (Duration: 8.9ms | Allocations: 4372)
+  Rendered layout layouts/application.html.erb (Duration: 25.0ms | Allocations: 17735)
+Completed 200 OK in 33ms (Views: 26.6ms | ActiveRecord: 1.7ms | Allocations: 20204)
+
+
+Started GET "/flights?destiny=Hola&commit=Buscar" for ::1 at 2022-06-10 16:37:44 -0400
+Processing by FlightsController#index as HTML
+  Parameters: {"destiny"=>"Hola", "commit"=>"Buscar"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/flights_controller.rb:3:in `index'
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/flights_controller.rb:3:in `index'
+Completed 404 Not Found in 18ms (ActiveRecord: 2.1ms | Allocations: 4112)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Flight with 'id'=Hola):
+  
+app/controllers/flights_controller.rb:3:in `index'
+Started GET "/flights?destiny=Hola&commit=Buscar" for ::1 at 2022-06-10 16:38:02 -0400
+Processing by FlightsController#index as HTML
+  Parameters: {"destiny"=>"Hola", "commit"=>"Buscar"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/flights_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."destiny" = ?[0m  [["destiny", "Hola"]]
+  ↳ app/views/flights/index.html.erb:16
+  Rendered flights/index.html.erb within layouts/application (Duration: 3.8ms | Allocations: 1863)
+  Rendered layout layouts/application.html.erb (Duration: 27.9ms | Allocations: 15336)
+Completed 200 OK in 43ms (Views: 30.1ms | ActiveRecord: 1.4ms | Allocations: 18776)
+
+
+Started GET "/flights?destiny=Hola&commit=Buscar" for ::1 at 2022-06-10 16:38:27 -0400
+Processing by FlightsController#index as HTML
+  Parameters: {"destiny"=>"Hola", "commit"=>"Buscar"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/flights_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."destiny" = ?[0m  [["destiny", "Hola"]]
+  ↳ app/views/flights/index.html.erb:16
+  Rendered flights/index.html.erb within layouts/application (Duration: 4.2ms | Allocations: 1830)
+  Rendered layout layouts/application.html.erb (Duration: 21.4ms | Allocations: 15191)
+Completed 200 OK in 32ms (Views: 23.1ms | ActiveRecord: 1.3ms | Allocations: 18619)
+
+
+Started GET "/flights?destiny=Chao&commit=Buscar" for ::1 at 2022-06-10 16:38:37 -0400
+Processing by FlightsController#index as HTML
+  Parameters: {"destiny"=>"Chao", "commit"=>"Buscar"}
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."destiny" = ?[0m  [["destiny", "Chao"]]
+  ↳ app/views/flights/index.html.erb:16
+  Rendered flights/index.html.erb within layouts/application (Duration: 8.4ms | Allocations: 3310)
+  Rendered layout layouts/application.html.erb (Duration: 14.2ms | Allocations: 5663)
+Completed 200 OK in 17ms (Views: 14.7ms | ActiveRecord: 0.8ms | Allocations: 6041)
+
+
+Started GET "/" for ::1 at 2022-06-10 16:40:19 -0400
+Processing by FlightsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  Rendered flights/index.html.erb within layouts/application (Duration: 1.9ms | Allocations: 2477)
+  Rendered layout layouts/application.html.erb (Duration: 2.4ms | Allocations: 2555)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 2863)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    13: <% end %>
+    14: 
+    15: <ul>
+    16:   <% @flights.each do |flight| %>
+    17:     <li>
+    18:     <a href="/flights/<%= flight.id %>">
+    19:       Vuelo <%= flight.origin %>-<%= flight.destiny %>
+  
+app/views/flights/index.html.erb:16
+Started GET "/" for ::1 at 2022-06-10 16:40:23 -0400
+Processing by FlightsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  Rendered flights/index.html.erb within layouts/application (Duration: 2.2ms | Allocations: 2451)
+  Rendered layout layouts/application.html.erb (Duration: 2.7ms | Allocations: 2529)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms | Allocations: 2830)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    13: <% end %>
+    14: 
+    15: <ul>
+    16:   <% @flights.each do |flight| %>
+    17:     <li>
+    18:     <a href="/flights/<%= flight.id %>">
+    19:       Vuelo <%= flight.origin %>-<%= flight.destiny %>
+  
+app/views/flights/index.html.erb:16
+Started GET "/" for ::1 at 2022-06-10 16:40:43 -0400
+Processing by FlightsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/views/flights/index.html.erb:16
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights"[0m
+  ↳ app/views/flights/index.html.erb:16
+  Rendered flights/index.html.erb within layouts/application (Duration: 11.9ms | Allocations: 4430)
+  Rendered layout layouts/application.html.erb (Duration: 37.4ms | Allocations: 17901)
+Completed 200 OK in 46ms (Views: 39.7ms | ActiveRecord: 1.7ms | Allocations: 20382)
+
+
+Started GET "/flights?destiny=Chao&commit=Buscar" for ::1 at 2022-06-10 16:40:48 -0400
+Processing by FlightsController#index as HTML
+  Parameters: {"destiny"=>"Chao", "commit"=>"Buscar"}
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."destiny" = ?[0m  [["destiny", "Chao"]]
+  ↳ app/views/flights/index.html.erb:16
+  Rendered flights/index.html.erb within layouts/application (Duration: 4.4ms | Allocations: 1843)
+  Rendered layout layouts/application.html.erb (Duration: 9.9ms | Allocations: 4198)
+Completed 200 OK in 12ms (Views: 10.8ms | ActiveRecord: 0.3ms | Allocations: 4607)
+
+
+Started GET "/flights?destiny=&commit=Buscar" for ::1 at 2022-06-10 16:44:40 -0400
+Processing by FlightsController#index as HTML
+  Parameters: {"destiny"=>"", "commit"=>"Buscar"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/flights_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE (destiny like '%')[0m
+  ↳ app/views/flights/index.html.erb:16
+  Rendered flights/index.html.erb within layouts/application (Duration: 10.0ms | Allocations: 3811)
+  Rendered layout layouts/application.html.erb (Duration: 22.2ms | Allocations: 17281)
+Completed 200 OK in 29ms (Views: 23.0ms | ActiveRecord: 0.9ms | Allocations: 20334)
+
+
+Started GET "/" for ::1 at 2022-06-10 16:44:51 -0400
+Processing by FlightsController#index as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/flights_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.4ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE (destiny like '%')[0m
+  ↳ app/views/flights/index.html.erb:16
+  Rendered flights/index.html.erb within layouts/application (Duration: 13.3ms | Allocations: 3824)
+  Rendered layout layouts/application.html.erb (Duration: 30.9ms | Allocations: 17190)
+Completed 200 OK in 42ms (Views: 30.9ms | ActiveRecord: 3.0ms | Allocations: 20238)
+
+
+Started GET "/flights?destiny=C&commit=Buscar" for ::1 at 2022-06-10 16:44:55 -0400
+Processing by FlightsController#index as HTML
+  Parameters: {"destiny"=>"C", "commit"=>"Buscar"}
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE (destiny like '%C')[0m
+  ↳ app/views/flights/index.html.erb:16
+  Rendered flights/index.html.erb within layouts/application (Duration: 3.4ms | Allocations: 1760)
+  Rendered layout layouts/application.html.erb (Duration: 8.2ms | Allocations: 4111)
+Completed 200 OK in 10ms (Views: 8.8ms | ActiveRecord: 0.2ms | Allocations: 4486)
+
+
+Started GET "/flights?destiny=Chao&commit=Buscar" for ::1 at 2022-06-10 16:45:03 -0400
+Processing by FlightsController#index as HTML
+  Parameters: {"destiny"=>"Chao", "commit"=>"Buscar"}
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE (destiny like '%Chao')[0m
+  ↳ app/views/flights/index.html.erb:16
+  Rendered flights/index.html.erb within layouts/application (Duration: 3.6ms | Allocations: 1830)
+  Rendered layout layouts/application.html.erb (Duration: 8.7ms | Allocations: 4181)
+Completed 200 OK in 11ms (Views: 9.4ms | ActiveRecord: 0.3ms | Allocations: 4556)
+
+
+Started GET "/flights?destiny=Hola&commit=Buscar" for ::1 at 2022-06-10 16:45:05 -0400
+Processing by FlightsController#index as HTML
+  Parameters: {"destiny"=>"Hola", "commit"=>"Buscar"}
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE (destiny like '%Hola')[0m
+  ↳ app/views/flights/index.html.erb:16
+  Rendered flights/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1760)
+  Rendered layout layouts/application.html.erb (Duration: 7.5ms | Allocations: 4107)
+Completed 200 OK in 10ms (Views: 8.3ms | ActiveRecord: 0.2ms | Allocations: 4482)
+
+
+Started GET "/flights?destiny=Choaao&commit=Buscar" for ::1 at 2022-06-10 16:45:14 -0400
+Processing by FlightsController#index as HTML
+  Parameters: {"destiny"=>"Choaao", "commit"=>"Buscar"}
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE (destiny like '%Choaao')[0m
+  ↳ app/views/flights/index.html.erb:16
+  Rendered flights/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1760)
+  Rendered layout layouts/application.html.erb (Duration: 7.9ms | Allocations: 4123)
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 0.2ms | Allocations: 4498)
+
+
+Started GET "/flights?destiny=Cha&commit=Buscar" for ::1 at 2022-06-10 16:45:17 -0400
+Processing by FlightsController#index as HTML
+  Parameters: {"destiny"=>"Cha", "commit"=>"Buscar"}
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE (destiny like '%Cha')[0m
+  ↳ app/views/flights/index.html.erb:16
+  Rendered flights/index.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1760)
+  Rendered layout layouts/application.html.erb (Duration: 5.4ms | Allocations: 4121)
+Completed 200 OK in 8ms (Views: 6.2ms | ActiveRecord: 0.2ms | Allocations: 4496)
+
+
+Started GET "/flights?destiny=C&commit=Buscar" for ::1 at 2022-06-10 16:46:47 -0400
+Processing by FlightsController#index as HTML
+  Parameters: {"destiny"=>"C", "commit"=>"Buscar"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/flights_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE (destiny like '%C%')[0m
+  ↳ app/views/flights/index.html.erb:16
+  Rendered flights/index.html.erb within layouts/application (Duration: 16.8ms | Allocations: 3739)
+  Rendered layout layouts/application.html.erb (Duration: 47.7ms | Allocations: 17217)
+Completed 200 OK in 70ms (Views: 46.7ms | ActiveRecord: 3.9ms | Allocations: 20262)
+
+
+Started GET "/flights?destiny=Chao&commit=Buscar" for ::1 at 2022-06-10 16:49:53 -0400
+Processing by FlightsController#index as HTML
+  Parameters: {"destiny"=>"Chao", "commit"=>"Buscar"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/flights_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE (destiny like '%Chao%')[0m
+  ↳ app/views/flights/index.html.erb:21
+  Rendered flights/index.html.erb within layouts/application (Duration: 8.7ms | Allocations: 4953)
+  Rendered layout layouts/application.html.erb (Duration: 24.4ms | Allocations: 18529)
+Completed 200 OK in 36ms (Views: 25.6ms | ActiveRecord: 1.5ms | Allocations: 21875)
+
+
+Started GET "/flights?destiny=C&origin=&commit=Buscar" for ::1 at 2022-06-10 16:49:56 -0400
+Processing by FlightsController#index as HTML
+  Parameters: {"destiny"=>"C", "origin"=>"", "commit"=>"Buscar"}
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE (destiny like '%C%')[0m
+  ↳ app/views/flights/index.html.erb:21
+  Rendered flights/index.html.erb within layouts/application (Duration: 3.9ms | Allocations: 2802)
+  Rendered layout layouts/application.html.erb (Duration: 7.9ms | Allocations: 5163)
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 0.2ms | Allocations: 5542)
+
+
+Started GET "/flights?destiny=&origin=&commit=Buscar" for ::1 at 2022-06-10 16:49:58 -0400
+Processing by FlightsController#index as HTML
+  Parameters: {"destiny"=>"", "origin"=>"", "commit"=>"Buscar"}
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE (destiny like '%%')[0m
+  ↳ app/views/flights/index.html.erb:21
+  Rendered flights/index.html.erb within layouts/application (Duration: 5.2ms | Allocations: 2912)
+  Rendered layout layouts/application.html.erb (Duration: 9.9ms | Allocations: 5271)
+Completed 200 OK in 12ms (Views: 10.6ms | ActiveRecord: 0.3ms | Allocations: 5650)
+
+
+Started GET "/flights?destiny=C&origin=H&commit=Buscar" for ::1 at 2022-06-10 16:51:44 -0400
+Processing by FlightsController#index as HTML
+  Parameters: {"destiny"=>"C", "origin"=>"H", "commit"=>"Buscar"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/flights_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE (destiny like '%C%' and origin like '%H%')[0m
+  ↳ app/views/flights/index.html.erb:21
+  Rendered flights/index.html.erb within layouts/application (Duration: 5.9ms | Allocations: 4602)
+  Rendered layout layouts/application.html.erb (Duration: 18.5ms | Allocations: 18074)
+Completed 200 OK in 32ms (Views: 19.5ms | ActiveRecord: 1.0ms | Allocations: 21146)
+
+
+Started GET "/flights?destiny=C&origin=&commit=Buscar" for ::1 at 2022-06-10 16:52:03 -0400
+Processing by FlightsController#index as HTML
+  Parameters: {"destiny"=>"C", "origin"=>"", "commit"=>"Buscar"}
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE (destiny like '%C%' and origin like '%%')[0m
+  ↳ app/views/flights/index.html.erb:21
+  Rendered flights/index.html.erb within layouts/application (Duration: 3.5ms | Allocations: 2802)
+  Rendered layout layouts/application.html.erb (Duration: 7.4ms | Allocations: 5155)
+Completed 200 OK in 9ms (Views: 7.9ms | ActiveRecord: 0.2ms | Allocations: 5540)
+
+
+Started GET "/flights?destiny=&origin=S&commit=Buscar" for ::1 at 2022-06-10 16:52:06 -0400
+Processing by FlightsController#index as HTML
+  Parameters: {"destiny"=>"", "origin"=>"S", "commit"=>"Buscar"}
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE (destiny like '%%' and origin like '%S%')[0m
+  ↳ app/views/flights/index.html.erb:21
+  Rendered flights/index.html.erb within layouts/application (Duration: 3.6ms | Allocations: 2747)
+  Rendered layout layouts/application.html.erb (Duration: 7.6ms | Allocations: 5100)
+Completed 200 OK in 10ms (Views: 8.2ms | ActiveRecord: 0.2ms | Allocations: 5485)
+
+
+Started GET "/flights?destiny=&origin=&commit=Buscar" for ::1 at 2022-06-10 16:52:08 -0400
+Processing by FlightsController#index as HTML
+  Parameters: {"destiny"=>"", "origin"=>"", "commit"=>"Buscar"}
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE (destiny like '%%' and origin like '%%')[0m
+  ↳ app/views/flights/index.html.erb:21
+  Rendered flights/index.html.erb within layouts/application (Duration: 4.1ms | Allocations: 2913)
+  Rendered layout layouts/application.html.erb (Duration: 9.1ms | Allocations: 5278)
+Completed 200 OK in 11ms (Views: 9.8ms | ActiveRecord: 0.3ms | Allocations: 5663)
+
+
+Started GET "/flights?destiny=&origin=a&commit=Buscar" for ::1 at 2022-06-10 16:52:12 -0400
+Processing by FlightsController#index as HTML
+  Parameters: {"destiny"=>"", "origin"=>"a", "commit"=>"Buscar"}
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE (destiny like '%%' and origin like '%a%')[0m
+  ↳ app/views/flights/index.html.erb:21
+  Rendered flights/index.html.erb within layouts/application (Duration: 4.8ms | Allocations: 2857)
+  Rendered layout layouts/application.html.erb (Duration: 10.1ms | Allocations: 5212)
+Completed 200 OK in 12ms (Views: 10.8ms | ActiveRecord: 0.3ms | Allocations: 5597)
+
+
+Started GET "/flights?destiny=c&origin=a&commit=Buscar" for ::1 at 2022-06-10 16:52:17 -0400
+Processing by FlightsController#index as HTML
+  Parameters: {"destiny"=>"c", "origin"=>"a", "commit"=>"Buscar"}
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE (destiny like '%c%' and origin like '%a%')[0m
+  ↳ app/views/flights/index.html.erb:21
+  Rendered flights/index.html.erb within layouts/application (Duration: 4.4ms | Allocations: 2803)
+  Rendered layout layouts/application.html.erb (Duration: 9.2ms | Allocations: 5160)
+Completed 200 OK in 12ms (Views: 10.2ms | ActiveRecord: 0.3ms | Allocations: 5545)
+
+
+Started GET "/flights?destiny=c&origin=a&commit=Buscar" for ::1 at 2022-06-10 16:55:37 -0400
+Processing by FlightsController#index as HTML
+  Parameters: {"destiny"=>"c", "origin"=>"a", "commit"=>"Buscar"}
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.7ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE (destiny like '%c%' and origin like '%a%')[0m
+  ↳ app/views/flights/index.html.erb:31
+  Rendered flights/index.html.erb within layouts/application (Duration: 44.0ms | Allocations: 9252)
+  Rendered layout layouts/application.html.erb (Duration: 50.4ms | Allocations: 11895)
+Completed 200 OK in 54ms (Views: 52.3ms | ActiveRecord: 0.7ms | Allocations: 12976)
+
+
+Started GET "/flights?destiny=c&origin=a&commit=Buscar" for ::1 at 2022-06-10 16:55:49 -0400
+Processing by FlightsController#index as HTML
+  Parameters: {"destiny"=>"c", "origin"=>"a", "commit"=>"Buscar"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/flights_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.4ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE (destiny like '%c%' and origin like '%a%')[0m
+  ↳ app/views/flights/index.html.erb:31
+  Rendered flights/index.html.erb within layouts/application (Duration: 32.0ms | Allocations: 6499)
+  Rendered layout layouts/application.html.erb (Duration: 62.8ms | Allocations: 19996)
+Completed 200 OK in 77ms (Views: 62.4ms | ActiveRecord: 3.6ms | Allocations: 23073)
+
+
+Started GET "/flights?destiny=&origin=&date=2022-06-18&time=18%3A57&commit=Buscar" for ::1 at 2022-06-10 16:55:55 -0400
+Processing by FlightsController#index as HTML
+  Parameters: {"destiny"=>"", "origin"=>"", "date"=>"2022-06-18", "time"=>"18:57", "commit"=>"Buscar"}
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.4ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE (destiny like '%%' and origin like '%%')[0m
+  ↳ app/views/flights/index.html.erb:31
+  Rendered flights/index.html.erb within layouts/application (Duration: 6.1ms | Allocations: 4754)
+  Rendered layout layouts/application.html.erb (Duration: 11.2ms | Allocations: 7125)
+Completed 200 OK in 14ms (Views: 11.9ms | ActiveRecord: 0.4ms | Allocations: 7527)
+
+
+Started GET "/flights?destiny=&origin=&date=2022-06-23&time=18%3A58&commit=Buscar" for ::1 at 2022-06-10 16:56:26 -0400
+Processing by FlightsController#index as HTML
+  Parameters: {"destiny"=>"", "origin"=>"", "date"=>"2022-06-23", "time"=>"18:58", "commit"=>"Buscar"}
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/flights_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.6ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE (destiny like '%%' and origin like '%%')[0m
+  ↳ app/views/flights/index.html.erb:31
+  Rendered flights/index.html.erb within layouts/application (Duration: 48.4ms | Allocations: 6551)
+  Rendered layout layouts/application.html.erb (Duration: 126.5ms | Allocations: 19962)
+Completed 200 OK in 161ms (Views: 127.5ms | ActiveRecord: 10.8ms | Allocations: 23039)
+
+
+Started GET "/flights?destiny=&origin=&date=2022-06-23&time=18%3A58&commit=Buscar" for ::1 at 2022-06-10 17:09:34 -0400
+Processing by FlightsController#index as HTML
+  Parameters: {"destiny"=>"", "origin"=>"", "date"=>"2022-06-23", "time"=>"18:58", "commit"=>"Buscar"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/flights_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE (destiny like '%%' and origin like '%%' and date like '%2022-06-23%' and time like '%18:58%')[0m
+  ↳ app/views/flights/index.html.erb:31
+  Rendered flights/index.html.erb within layouts/application (Duration: 4.6ms | Allocations: 4577)
+  Rendered layout layouts/application.html.erb (Duration: 44.3ms | Allocations: 18043)
+Completed 200 OK in 60ms (Views: 46.4ms | ActiveRecord: 0.7ms | Allocations: 21129)
+
+
+Started GET "/flights?destiny=&origin=&date=&time=&commit=Buscar" for ::1 at 2022-06-10 17:09:39 -0400
+Processing by FlightsController#index as HTML
+  Parameters: {"destiny"=>"", "origin"=>"", "date"=>"", "time"=>"", "commit"=>"Buscar"}
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE (destiny like '%%' and origin like '%%' and date like '%%' and time like '%%')[0m
+  ↳ app/views/flights/index.html.erb:31
+  Rendered flights/index.html.erb within layouts/application (Duration: 10.4ms | Allocations: 6122)
+  Rendered layout layouts/application.html.erb (Duration: 22.2ms | Allocations: 8483)
+Completed 200 OK in 24ms (Views: 23.1ms | ActiveRecord: 0.3ms | Allocations: 8886)
+
+
+Started GET "/flights?destiny=&origin=&date=&time=09%3A15&commit=Buscar" for ::1 at 2022-06-10 17:09:56 -0400
+Processing by FlightsController#index as HTML
+  Parameters: {"destiny"=>"", "origin"=>"", "date"=>"", "time"=>"09:15", "commit"=>"Buscar"}
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE (destiny like '%%' and origin like '%%' and date like '%%' and time like '%09:15%')[0m
+  ↳ app/views/flights/index.html.erb:31
+  Rendered flights/index.html.erb within layouts/application (Duration: 16.6ms | Allocations: 4518)
+  Rendered layout layouts/application.html.erb (Duration: 22.4ms | Allocations: 6885)
+Completed 200 OK in 24ms (Views: 23.0ms | ActiveRecord: 0.3ms | Allocations: 7287)
+
+
+Started GET "/flights?destiny=&origin=&date=&time=&commit=Buscar" for ::1 at 2022-06-10 17:10:11 -0400
+Processing by FlightsController#index as HTML
+  Parameters: {"destiny"=>"", "origin"=>"", "date"=>"", "time"=>"", "commit"=>"Buscar"}
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.9ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE (destiny like '%%' and origin like '%%' and date like '%%' and time like '%%')[0m
+  ↳ app/views/flights/index.html.erb:31
+  Rendered flights/index.html.erb within layouts/application (Duration: 22.8ms | Allocations: 4753)
+  Rendered layout layouts/application.html.erb (Duration: 28.8ms | Allocations: 7106)
+Completed 200 OK in 31ms (Views: 29.6ms | ActiveRecord: 0.9ms | Allocations: 7508)
+
+
+Started GET "/flights?destiny=&origin=&date=&time=08%3A20&commit=Buscar" for ::1 at 2022-06-10 17:10:25 -0400
+Processing by FlightsController#index as HTML
+  Parameters: {"destiny"=>"", "origin"=>"", "date"=>"", "time"=>"08:20", "commit"=>"Buscar"}
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.4ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE (destiny like '%%' and origin like '%%' and date like '%%' and time like '%08:20%')[0m
+  ↳ app/views/flights/index.html.erb:31
+  Rendered flights/index.html.erb within layouts/application (Duration: 8.1ms | Allocations: 4587)
+  Rendered layout layouts/application.html.erb (Duration: 14.8ms | Allocations: 6938)
+Completed 200 OK in 17ms (Views: 15.6ms | ActiveRecord: 0.4ms | Allocations: 7340)
+
+
+Started GET "/flights?destiny=&origin=&date=2022-06-07&time=&commit=Buscar" for ::1 at 2022-06-10 17:10:36 -0400
+Processing by FlightsController#index as HTML
+  Parameters: {"destiny"=>"", "origin"=>"", "date"=>"2022-06-07", "time"=>"", "commit"=>"Buscar"}
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE (destiny like '%%' and origin like '%%' and date like '%2022-06-07%' and time like '%%')[0m
+  ↳ app/views/flights/index.html.erb:31
+  Rendered flights/index.html.erb within layouts/application (Duration: 5.0ms | Allocations: 4642)
+  Rendered layout layouts/application.html.erb (Duration: 12.4ms | Allocations: 7001)
+Completed 200 OK in 14ms (Views: 13.0ms | ActiveRecord: 0.2ms | Allocations: 7403)
+
+
+Started GET "/flights?destiny=&origin=&date=&time=&commit=Buscar" for ::1 at 2022-06-10 17:10:50 -0400
+Processing by FlightsController#index as HTML
+  Parameters: {"destiny"=>"", "origin"=>"", "date"=>"", "time"=>"", "commit"=>"Buscar"}
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE (destiny like '%%' and origin like '%%' and date like '%%' and time like '%%')[0m
+  ↳ app/views/flights/index.html.erb:31
+  Rendered flights/index.html.erb within layouts/application (Duration: 9.4ms | Allocations: 4754)
+  Rendered layout layouts/application.html.erb (Duration: 20.9ms | Allocations: 7105)
+Completed 200 OK in 24ms (Views: 22.4ms | ActiveRecord: 0.3ms | Allocations: 7507)
+
+
+Started GET "/flights?destiny=a&origin=a&date=&time=&commit=Buscar" for ::1 at 2022-06-10 17:11:53 -0400
+Processing by FlightsController#index as HTML
+  Parameters: {"destiny"=>"a", "origin"=>"a", "date"=>"", "time"=>"", "commit"=>"Buscar"}
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE (destiny like '%a%' and origin like '%a%' and date like '%%' and time like '%%')[0m
+  ↳ app/views/flights/index.html.erb:31
+  Rendered flights/index.html.erb within layouts/application (Duration: 9.2ms | Allocations: 4697)
+  Rendered layout layouts/application.html.erb (Duration: 17.5ms | Allocations: 7054)
+Completed 200 OK in 21ms (Views: 20.0ms | ActiveRecord: 0.3ms | Allocations: 7456)
 
 
