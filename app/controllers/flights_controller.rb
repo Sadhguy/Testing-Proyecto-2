@@ -1,8 +1,6 @@
 class FlightsController < ApplicationController
   def index
-    @flights = Flight.all
-    bookings = Booking.all
-    puts bookings
+    @flights = Flight.where("destiny like :destiny and origin like :origin and date like :date and time like :time", destiny: "%#{params[:destiny]}%", origin: "%#{params[:origin]}%", date: "%#{params[:date]}%", time: "%#{params[:time]}%")
   end
 
   def show

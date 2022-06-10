@@ -1,6 +1,32 @@
 
 <h1>Flights</h1>
 
+<%= form_with(model:@flight, method: :get, url: flights_path) do |form| %>
+
+  <div class="field">
+      <%=form.label :destiny %>
+      <%=form.text_field :destiny %>
+  </div>
+
+  <div class="field">
+      <%=form.label :origin %>
+      <%=form.text_field :origin %>
+  </div>
+
+  <div class="field">
+        <%=form.label :date %>
+        <%=form.date_field :date %>
+  </div>
+
+  <div class="field">
+        <%=form.label :time %>
+        <%=form.time_field :time %>
+  </div>
+
+  <%=form.submit 'Buscar', :class => "action" %>
+
+<% end %>
+
 <ul>
   <% @flights.each do |flight| %>
     <li>
