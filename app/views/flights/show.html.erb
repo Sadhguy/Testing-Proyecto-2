@@ -8,6 +8,25 @@
 
 <p>Fecha: <%= @flight.time.strftime("%I:%M%p") %></p>
 
+<h3>Reserva</h3>
+<%= form_with(model:@booking, method: :post, url: create_booking_path) do |form| %>
+  <div class="field">
+        <%= form.hidden_field :flight_id, :value => @flight.id %>
+    </div>
+   <div>
+     <%= form.label :Nombre %><br>
+     <%= form.text_field :user %>
+   </div>
+   <div>
+     <%= form.label :Asientos %><br>
+     <%= form.text_field :seats %>
+     <p>Si quieres elegir más de un asiento debes separarlos con punto y coma (";") (Ej: 1A;2A;14B) </p>
+   </div>
+   <div>
+     <%= form.submit %>
+   </div>
+ <% end %>
+
 <p>Asientos: <%= @flight.seats.each do |seat| %>
     <li>
       <%= seat.row %><%= seat.column%>
