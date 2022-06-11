@@ -3,6 +3,10 @@ class BookingsController < ApplicationController
     @booking = Booking.new
   end
 
+  def index
+    @bookings = Booking.all
+  end
+
   def create
     seats = params[:seats].split(";")
     if seats.length > 0 && seats[0].length < 4 && params[:user] != ''
@@ -12,7 +16,13 @@ class BookingsController < ApplicationController
           seat = Seat.update(seat.id, disponibility: false)
         end
       end
-      booking = Booking.new(user: params[:user], seats: seats)
+      @booking = Booking.new(user: params[:user], seats: seats)
+      puts @booking
+      if @booking.save
+        redirect_to "/flights/#{params[:flight_id]}"
+      else
+        render :new, status: :unprocessable_entity
+      end
     end
 
     #puts(@booking.seats)
@@ -22,6 +32,5 @@ class BookingsController < ApplicationController
     #else
     #  render :new, status: :unprocessable_entity
     #end
-    redirect_to "/flights/#{params[:flight_id]}"
   end
 end

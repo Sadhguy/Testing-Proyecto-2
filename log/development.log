@@ -11378,3 +11378,1090 @@ Processing by FlightsController#index as HTML
 Completed 200 OK in 21ms (Views: 20.0ms | ActiveRecord: 0.3ms | Allocations: 7456)
 
 
+Started GET "/flights/2" for 127.0.0.1 at 2022-06-11 12:51:30 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by FlightsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mFlight Load (0.0ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/flights_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering flights/show.html.erb within layouts/application
+  [1m[36mSeat Load (0.8ms)[0m  [1m[34mSELECT "seats".* FROM "seats" WHERE "seats"."flight_id" = ?[0m  [["flight_id", 2]]
+  ↳ app/views/flights/show.html.erb:30
+  Rendered flights/show.html.erb within layouts/application (Duration: 22.0ms | Allocations: 30032)
+  Rendered layout layouts/application.html.erb (Duration: 46.6ms | Allocations: 64926)
+Completed 200 OK in 64ms (Views: 47.5ms | ActiveRecord: 1.2ms | Allocations: 80339)
+
+
+Started POST "/bookings/create" for 127.0.0.1 at 2022-06-11 12:51:47 -0400
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "flight_id"=>"2", "user"=>"Seba", "seats"=>"1A;2A;10B", "commit"=>"Save "}
+  [1m[36mSeat Load (0.2ms)[0m  [1m[34mSELECT "seats".* FROM "seats" WHERE "seats"."flight_id" = ? AND "seats"."row" = ? AND "seats"."column" = ? LIMIT ?[0m  [["flight_id", 2], ["row", 1], ["column", "A"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:10:in `block in create'
+  [1m[36mSeat Load (0.1ms)[0m  [1m[34mSELECT "seats".* FROM "seats" WHERE "seats"."id" = ? LIMIT ?[0m  [["id", 116], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:12:in `block in create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/bookings_controller.rb:12:in `block in create'
+  [1m[36mFlight Load (0.1ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:12:in `block in create'
+  [1m[36mSeat Update (0.9ms)[0m  [1m[33mUPDATE "seats" SET "disponibility" = ?, "updated_at" = ? WHERE "seats"."id" = ?[0m  [["disponibility", 0], ["updated_at", "2022-06-11 16:51:48.001515"], ["id", 116]]
+  ↳ app/controllers/bookings_controller.rb:12:in `block in create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/bookings_controller.rb:12:in `block in create'
+  [1m[36mSeat Load (0.1ms)[0m  [1m[34mSELECT "seats".* FROM "seats" WHERE "seats"."flight_id" = ? AND "seats"."row" = ? AND "seats"."column" = ? LIMIT ?[0m  [["flight_id", 2], ["row", 2], ["column", "A"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:10:in `block in create'
+  [1m[36mSeat Load (0.1ms)[0m  [1m[34mSELECT "seats".* FROM "seats" WHERE "seats"."id" = ? LIMIT ?[0m  [["id", 117], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:12:in `block in create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/bookings_controller.rb:12:in `block in create'
+  [1m[36mFlight Load (0.1ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:12:in `block in create'
+  [1m[36mSeat Update (0.3ms)[0m  [1m[33mUPDATE "seats" SET "disponibility" = ?, "updated_at" = ? WHERE "seats"."id" = ?[0m  [["disponibility", 0], ["updated_at", "2022-06-11 16:51:48.008086"], ["id", 117]]
+  ↳ app/controllers/bookings_controller.rb:12:in `block in create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/bookings_controller.rb:12:in `block in create'
+  [1m[36mSeat Load (0.1ms)[0m  [1m[34mSELECT "seats".* FROM "seats" WHERE "seats"."flight_id" = ? AND "seats"."row" = ? AND "seats"."column" = ? LIMIT ?[0m  [["flight_id", 2], ["row", 10], ["column", "B"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:10:in `block in create'
+  [1m[36mSeat Load (0.1ms)[0m  [1m[34mSELECT "seats".* FROM "seats" WHERE "seats"."id" = ? LIMIT ?[0m  [["id", 148], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:12:in `block in create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/bookings_controller.rb:12:in `block in create'
+  [1m[36mFlight Load (0.1ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:12:in `block in create'
+  [1m[36mSeat Update (0.2ms)[0m  [1m[33mUPDATE "seats" SET "disponibility" = ?, "updated_at" = ? WHERE "seats"."id" = ?[0m  [["disponibility", 0], ["updated_at", "2022-06-11 16:51:48.013169"], ["id", 148]]
+  ↳ app/controllers/bookings_controller.rb:12:in `block in create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/bookings_controller.rb:12:in `block in create'
+Redirected to http://127.0.0.1:3000/flights/2
+Completed 302 Found in 32ms (ActiveRecord: 10.0ms | Allocations: 17894)
+
+
+Started GET "/flights/2" for 127.0.0.1 at 2022-06-11 12:51:48 -0400
+Processing by FlightsController#show as TURBO_STREAM
+  Parameters: {"id"=>"2"}
+  [1m[36mFlight Load (0.1ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/flights_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering flights/show.html.erb within layouts/application
+  [1m[36mSeat Load (0.2ms)[0m  [1m[34mSELECT "seats".* FROM "seats" WHERE "seats"."flight_id" = ?[0m  [["flight_id", 2]]
+  ↳ app/views/flights/show.html.erb:30
+  Rendered flights/show.html.erb within layouts/application (Duration: 10.1ms | Allocations: 15272)
+  Rendered layout layouts/application.html.erb (Duration: 12.1ms | Allocations: 17507)
+Completed 200 OK in 14ms (Views: 12.4ms | ActiveRecord: 0.3ms | Allocations: 18334)
+
+
+Started GET "/bookings/new" for 127.0.0.1 at 2022-06-11 12:54:21 -0400
+Processing by BookingsController#new as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/bookings_controller.rb:3:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  Rendered bookings/new.html.erb within layouts/application (Duration: 2.0ms | Allocations: 2092)
+  Rendered layout layouts/application.html.erb (Duration: 12.2ms | Allocations: 16306)
+Completed 200 OK in 23ms (Views: 13.6ms | ActiveRecord: 0.4ms | Allocations: 19906)
+
+
+Started GET "/booking/index" for 127.0.0.1 at 2022-06-11 12:54:24 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/booking/index"):
+  
+Started GET "/bookings/index" for 127.0.0.1 at 2022-06-11 12:54:27 -0400
+  
+AbstractController::ActionNotFound (The action 'show' could not be found for BookingsController):
+  
+actionpack (7.0.3) lib/abstract_controller/base.rb:146:in `process'
+actionview (7.0.3) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.3) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.3) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.3) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.3) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.3) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.3) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.3) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.3) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.3.1) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3.1) lib/rack/etag.rb:27:in `call'
+rack (2.2.3.1) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3.1) lib/rack/head.rb:12:in `call'
+actionpack (7.0.3) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.3) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.3.1) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3.1) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/cookies.rb:697:in `call'
+activerecord (7.0.3) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.3) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.3) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.3) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:114:in `block in tagged'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:38:in `tagged'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:114:in `tagged'
+railties (7.0.3) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3.1) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3.1) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/server_timing.rb:20:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.3.1) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.3) lib/rails/engine.rb:530:in `call'
+puma (5.6.4) lib/puma/configuration.rb:252:in `call'
+puma (5.6.4) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.4) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.4) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.4) lib/puma/server.rb:441:in `process_client'
+puma (5.6.4) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/bookings/index" for 127.0.0.1 at 2022-06-11 12:55:01 -0400
+  
+AbstractController::ActionNotFound (The action 'show' could not be found for BookingsController):
+  
+actionpack (7.0.3) lib/abstract_controller/base.rb:146:in `process'
+actionview (7.0.3) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.3) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.3) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.3) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.3) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.3) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.3) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.3) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.3) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.3.1) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3.1) lib/rack/etag.rb:27:in `call'
+rack (2.2.3.1) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3.1) lib/rack/head.rb:12:in `call'
+actionpack (7.0.3) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.3) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.3.1) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3.1) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/cookies.rb:697:in `call'
+activerecord (7.0.3) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.3) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.3) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.3) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:114:in `block in tagged'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:38:in `tagged'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:114:in `tagged'
+railties (7.0.3) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3.1) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3.1) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/server_timing.rb:20:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.3.1) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.3) lib/rails/engine.rb:530:in `call'
+puma (5.6.4) lib/puma/configuration.rb:252:in `call'
+puma (5.6.4) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.4) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.4) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.4) lib/puma/server.rb:441:in `process_client'
+puma (5.6.4) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/bookings/new" for 127.0.0.1 at 2022-06-11 12:55:02 -0400
+Processing by BookingsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  Rendered bookings/new.html.erb within layouts/application (Duration: 3.1ms | Allocations: 1238)
+  Rendered layout layouts/application.html.erb (Duration: 7.6ms | Allocations: 3496)
+Completed 200 OK in 9ms (Views: 8.3ms | ActiveRecord: 0.0ms | Allocations: 3830)
+
+
+Started GET "/bookings/" for 127.0.0.1 at 2022-06-11 12:55:02 -0400
+Processing by BookingsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/index.html.erb within layouts/application
+  [1m[36mBooking Load (0.2ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings"[0m
+  ↳ app/views/bookings/index.html.erb:4
+  Rendered bookings/index.html.erb within layouts/application (Duration: 2.2ms | Allocations: 780)
+  Rendered layout layouts/application.html.erb (Duration: 3.8ms | Allocations: 3181)
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.2ms | Allocations: 3607)
+
+
+Started GET "/flights/2" for 127.0.0.1 at 2022-06-11 13:02:11 -0400
+Processing by FlightsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/flights_controller.rb:9:in `show'
+  [1m[36mFlight Load (0.0ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/flights_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering flights/show.html.erb within layouts/application
+  [1m[36mSeat Load (0.8ms)[0m  [1m[34mSELECT "seats".* FROM "seats" WHERE "seats"."flight_id" = ?[0m  [["flight_id", 2]]
+  ↳ app/views/flights/show.html.erb:30
+  Rendered flights/show.html.erb within layouts/application (Duration: 13.7ms | Allocations: 20486)
+  Rendered layout layouts/application.html.erb (Duration: 46.4ms | Allocations: 34465)
+Completed 200 OK in 54ms (Views: 46.5ms | ActiveRecord: 1.4ms | Allocations: 40325)
+
+
+Started POST "/bookings/create" for 127.0.0.1 at 2022-06-11 13:02:25 -0400
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "flight_id"=>"2", "user"=>"Seboso", "seats"=>"3A; 4A", "commit"=>"Save "}
+  [1m[36mSeat Load (0.2ms)[0m  [1m[34mSELECT "seats".* FROM "seats" WHERE "seats"."flight_id" = ? AND "seats"."row" = ? AND "seats"."column" = ? LIMIT ?[0m  [["flight_id", 2], ["row", 3], ["column", "A"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:14:in `block in create'
+  [1m[36mSeat Load (0.1ms)[0m  [1m[34mSELECT "seats".* FROM "seats" WHERE "seats"."id" = ? LIMIT ?[0m  [["id", 118], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:16:in `block in create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/bookings_controller.rb:16:in `block in create'
+  [1m[36mFlight Load (0.1ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:16:in `block in create'
+  [1m[36mSeat Update (0.3ms)[0m  [1m[33mUPDATE "seats" SET "disponibility" = ?, "updated_at" = ? WHERE "seats"."id" = ?[0m  [["disponibility", 0], ["updated_at", "2022-06-11 17:02:25.164582"], ["id", 118]]
+  ↳ app/controllers/bookings_controller.rb:16:in `block in create'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/bookings_controller.rb:16:in `block in create'
+  [1m[36mSeat Load (0.1ms)[0m  [1m[34mSELECT "seats".* FROM "seats" WHERE "seats"."flight_id" = ? AND "seats"."row" = ? AND "seats"."column" = ? LIMIT ?[0m  [["flight_id", 2], ["row", 4], ["column", "A"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:14:in `block in create'
+  [1m[36mSeat Load (0.1ms)[0m  [1m[34mSELECT "seats".* FROM "seats" WHERE "seats"."id" = ? LIMIT ?[0m  [["id", 119], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:16:in `block in create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/bookings_controller.rb:16:in `block in create'
+  [1m[36mFlight Load (0.0ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:16:in `block in create'
+  [1m[36mSeat Update (0.4ms)[0m  [1m[33mUPDATE "seats" SET "disponibility" = ?, "updated_at" = ? WHERE "seats"."id" = ?[0m  [["disponibility", 0], ["updated_at", "2022-06-11 17:02:25.169823"], ["id", 119]]
+  ↳ app/controllers/bookings_controller.rb:16:in `block in create'
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/bookings_controller.rb:16:in `block in create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/bookings_controller.rb:20:in `create'
+  [1m[36mBooking Create (0.3ms)[0m  [1m[32mINSERT INTO "bookings" ("user", "seats", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user", "Seboso"], ["seats", "---\n- 3A\n- \" 4A\"\n"], ["created_at", "2022-06-11 17:02:25.178697"], ["updated_at", "2022-06-11 17:02:25.178697"]]
+  ↳ app/controllers/bookings_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/bookings_controller.rb:20:in `create'
+Redirected to http://127.0.0.1:3000/bookings/1
+Redirected to 
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 4.3ms | Allocations: 13750)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/bookings_controller.rb:34:in `create'
+Started GET "/flights/2" for 127.0.0.1 at 2022-06-11 13:03:24 -0400
+Processing by FlightsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/flights_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering flights/show.html.erb within layouts/application
+  [1m[36mSeat Load (0.6ms)[0m  [1m[34mSELECT "seats".* FROM "seats" WHERE "seats"."flight_id" = ?[0m  [["flight_id", 2]]
+  ↳ app/views/flights/show.html.erb:30
+  Rendered flights/show.html.erb within layouts/application (Duration: 19.5ms | Allocations: 15273)
+  Rendered layout layouts/application.html.erb (Duration: 22.4ms | Allocations: 17523)
+Completed 200 OK in 26ms (Views: 22.7ms | ActiveRecord: 0.7ms | Allocations: 18295)
+
+
+Started GET "/flights/" for 127.0.0.1 at 2022-06-11 13:03:24 -0400
+Processing by FlightsController#index as HTML
+  [1m[36mBooking Load (0.2ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings"[0m
+  ↳ app/controllers/flights_controller.rb:5:in `puts'
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights"[0m
+  ↳ app/views/flights/index.html.erb:5
+  Rendered flights/index.html.erb within layouts/application (Duration: 3.5ms | Allocations: 1084)
+  Rendered layout layouts/application.html.erb (Duration: 8.2ms | Allocations: 3504)
+Completed 200 OK in 12ms (Views: 9.1ms | ActiveRecord: 0.5ms | Allocations: 4487)
+
+
+Started GET "/flights/4" for 127.0.0.1 at 2022-06-11 13:03:26 -0400
+Processing by FlightsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/flights_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering flights/show.html.erb within layouts/application
+  [1m[36mSeat Load (0.6ms)[0m  [1m[34mSELECT "seats".* FROM "seats" WHERE "seats"."flight_id" = ?[0m  [["flight_id", 4]]
+  ↳ app/views/flights/show.html.erb:30
+  Rendered flights/show.html.erb within layouts/application (Duration: 21.5ms | Allocations: 15262)
+  Rendered layout layouts/application.html.erb (Duration: 25.4ms | Allocations: 17496)
+Completed 200 OK in 28ms (Views: 25.3ms | ActiveRecord: 0.8ms | Allocations: 18269)
+
+
+Started POST "/bookings/create" for 127.0.0.1 at 2022-06-11 13:03:35 -0400
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "flight_id"=>"4", "user"=>"Seboso", "seats"=>"1A; 2A", "commit"=>"Save "}
+  [1m[36mSeat Load (0.3ms)[0m  [1m[34mSELECT "seats".* FROM "seats" WHERE "seats"."flight_id" = ? AND "seats"."row" = ? AND "seats"."column" = ? LIMIT ?[0m  [["flight_id", 4], ["row", 1], ["column", "A"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:14:in `block in create'
+  [1m[36mSeat Load (0.2ms)[0m  [1m[34mSELECT "seats".* FROM "seats" WHERE "seats"."id" = ? LIMIT ?[0m  [["id", 576], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:16:in `block in create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/bookings_controller.rb:16:in `block in create'
+  [1m[36mFlight Load (0.1ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:16:in `block in create'
+  [1m[36mSeat Update (0.5ms)[0m  [1m[33mUPDATE "seats" SET "disponibility" = ?, "updated_at" = ? WHERE "seats"."id" = ?[0m  [["disponibility", 0], ["updated_at", "2022-06-11 17:03:35.376613"], ["id", 576]]
+  ↳ app/controllers/bookings_controller.rb:16:in `block in create'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/bookings_controller.rb:16:in `block in create'
+  [1m[36mSeat Load (0.1ms)[0m  [1m[34mSELECT "seats".* FROM "seats" WHERE "seats"."flight_id" = ? AND "seats"."row" = ? AND "seats"."column" = ? LIMIT ?[0m  [["flight_id", 4], ["row", 2], ["column", "A"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:14:in `block in create'
+  [1m[36mSeat Load (0.1ms)[0m  [1m[34mSELECT "seats".* FROM "seats" WHERE "seats"."id" = ? LIMIT ?[0m  [["id", 577], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:16:in `block in create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/bookings_controller.rb:16:in `block in create'
+  [1m[36mFlight Load (0.1ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:16:in `block in create'
+  [1m[36mSeat Update (0.3ms)[0m  [1m[33mUPDATE "seats" SET "disponibility" = ?, "updated_at" = ? WHERE "seats"."id" = ?[0m  [["disponibility", 0], ["updated_at", "2022-06-11 17:03:35.383871"], ["id", 577]]
+  ↳ app/controllers/bookings_controller.rb:16:in `block in create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/bookings_controller.rb:16:in `block in create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/bookings_controller.rb:20:in `create'
+  [1m[36mBooking Create (0.4ms)[0m  [1m[32mINSERT INTO "bookings" ("user", "seats", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user", "Seboso"], ["seats", "---\n- 1A\n- \" 2A\"\n"], ["created_at", "2022-06-11 17:03:35.386094"], ["updated_at", "2022-06-11 17:03:35.386094"]]
+  ↳ app/controllers/bookings_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/bookings_controller.rb:20:in `create'
+Redirected to http://127.0.0.1:3000/bookings/2
+Redirected to 
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 3.7ms | Allocations: 9706)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/bookings_controller.rb:34:in `create'
+Started GET "/flights/" for 127.0.0.1 at 2022-06-11 13:04:38 -0400
+Processing by FlightsController#index as HTML
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/flights_controller.rb:5:in `puts'
+  [1m[36mBooking Load (0.1ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings"[0m
+  ↳ app/controllers/flights_controller.rb:5:in `puts'
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.1ms)[0m  [1m[34mSELECT "flights".* FROM "flights"[0m
+  ↳ app/views/flights/index.html.erb:5
+  Rendered flights/index.html.erb within layouts/application (Duration: 2.2ms | Allocations: 2559)
+  Rendered layout layouts/application.html.erb (Duration: 9.5ms | Allocations: 16723)
+Completed 200 OK in 18ms (Views: 10.3ms | ActiveRecord: 0.7ms | Allocations: 22141)
+
+
+Started GET "/flights/" for 127.0.0.1 at 2022-06-11 13:04:38 -0400
+Processing by FlightsController#index as HTML
+  [1m[36mBooking Load (0.1ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings"[0m
+  ↳ app/controllers/flights_controller.rb:5:in `puts'
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.0ms)[0m  [1m[34mSELECT "flights".* FROM "flights"[0m
+  ↳ app/views/flights/index.html.erb:5
+  Rendered flights/index.html.erb within layouts/application (Duration: 0.6ms | Allocations: 777)
+  Rendered layout layouts/application.html.erb (Duration: 2.5ms | Allocations: 3185)
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.1ms | Allocations: 4019)
+
+
+Started GET "/flights/3" for 127.0.0.1 at 2022-06-11 13:04:38 -0400
+Processing by FlightsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mFlight Load (1.0ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/flights_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering flights/show.html.erb within layouts/application
+  [1m[36mSeat Load (0.4ms)[0m  [1m[34mSELECT "seats".* FROM "seats" WHERE "seats"."flight_id" = ?[0m  [["flight_id", 3]]
+  ↳ app/views/flights/show.html.erb:30
+  Rendered flights/show.html.erb within layouts/application (Duration: 28.5ms | Allocations: 19964)
+  Rendered layout layouts/application.html.erb (Duration: 33.1ms | Allocations: 22198)
+Completed 200 OK in 37ms (Views: 32.8ms | ActiveRecord: 1.9ms | Allocations: 23553)
+
+
+Started POST "/bookings/create" for 127.0.0.1 at 2022-06-11 13:04:42 -0400
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "flight_id"=>"3", "user"=>"s", "seats"=>"1A", "commit"=>"Save "}
+  [1m[36mSeat Load (0.6ms)[0m  [1m[34mSELECT "seats".* FROM "seats" WHERE "seats"."flight_id" = ? AND "seats"."row" = ? AND "seats"."column" = ? LIMIT ?[0m  [["flight_id", 3], ["row", 1], ["column", "A"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:14:in `block in create'
+  [1m[36mSeat Load (0.2ms)[0m  [1m[34mSELECT "seats".* FROM "seats" WHERE "seats"."id" = ? LIMIT ?[0m  [["id", 346], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:16:in `block in create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/bookings_controller.rb:16:in `block in create'
+  [1m[36mFlight Load (0.1ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:16:in `block in create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/bookings_controller.rb:16:in `block in create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/bookings_controller.rb:21:in `create'
+  [1m[36mBooking Create (0.6ms)[0m  [1m[32mINSERT INTO "bookings" ("user", "seats", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user", "s"], ["seats", "---\n- 1A\n"], ["created_at", "2022-06-11 17:04:42.599133"], ["updated_at", "2022-06-11 17:04:42.599133"]]
+  ↳ app/controllers/bookings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/bookings_controller.rb:21:in `create'
+Redirected to http://127.0.0.1:3000/bookings/3
+Redirected to 
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 2.3ms | Allocations: 8023)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/bookings_controller.rb:35:in `create'
+Started GET "/flights/" for 127.0.0.1 at 2022-06-11 13:05:14 -0400
+Processing by FlightsController#index as HTML
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/flights_controller.rb:5:in `puts'
+  [1m[36mBooking Load (0.1ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings"[0m
+  ↳ app/controllers/flights_controller.rb:5:in `puts'
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.1ms)[0m  [1m[34mSELECT "flights".* FROM "flights"[0m
+  ↳ app/views/flights/index.html.erb:5
+  Rendered flights/index.html.erb within layouts/application (Duration: 2.5ms | Allocations: 2559)
+  Rendered layout layouts/application.html.erb (Duration: 10.6ms | Allocations: 16746)
+Completed 200 OK in 18ms (Views: 11.3ms | ActiveRecord: 0.9ms | Allocations: 22179)
+
+
+Started GET "/flights/" for 127.0.0.1 at 2022-06-11 13:05:15 -0400
+Processing by FlightsController#index as HTML
+  [1m[36mBooking Load (0.2ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings"[0m
+  ↳ app/controllers/flights_controller.rb:5:in `puts'
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.0ms)[0m  [1m[34mSELECT "flights".* FROM "flights"[0m
+  ↳ app/views/flights/index.html.erb:5
+  Rendered flights/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 777)
+  Rendered layout layouts/application.html.erb (Duration: 2.2ms | Allocations: 3187)
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.3ms | Allocations: 4035)
+
+
+Started GET "/flights/3" for 127.0.0.1 at 2022-06-11 13:05:16 -0400
+Processing by FlightsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/flights_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering flights/show.html.erb within layouts/application
+  [1m[36mSeat Load (0.4ms)[0m  [1m[34mSELECT "seats".* FROM "seats" WHERE "seats"."flight_id" = ?[0m  [["flight_id", 3]]
+  ↳ app/views/flights/show.html.erb:30
+  Rendered flights/show.html.erb within layouts/application (Duration: 25.7ms | Allocations: 19970)
+  Rendered layout layouts/application.html.erb (Duration: 28.5ms | Allocations: 22204)
+Completed 200 OK in 32ms (Views: 28.5ms | ActiveRecord: 1.1ms | Allocations: 23559)
+
+
+Started POST "/bookings/create" for 127.0.0.1 at 2022-06-11 13:05:23 -0400
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "flight_id"=>"3", "user"=>"s", "seats"=>"4A", "commit"=>"Save "}
+  [1m[36mSeat Load (0.3ms)[0m  [1m[34mSELECT "seats".* FROM "seats" WHERE "seats"."flight_id" = ? AND "seats"."row" = ? AND "seats"."column" = ? LIMIT ?[0m  [["flight_id", 3], ["row", 4], ["column", "A"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:14:in `block in create'
+  [1m[36mSeat Load (0.2ms)[0m  [1m[34mSELECT "seats".* FROM "seats" WHERE "seats"."id" = ? LIMIT ?[0m  [["id", 349], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:16:in `block in create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/bookings_controller.rb:16:in `block in create'
+  [1m[36mFlight Load (0.1ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:16:in `block in create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/bookings_controller.rb:16:in `block in create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/bookings_controller.rb:21:in `create'
+  [1m[36mBooking Create (0.5ms)[0m  [1m[32mINSERT INTO "bookings" ("user", "seats", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user", "s"], ["seats", "---\n- 4A\n"], ["created_at", "2022-06-11 17:05:23.067805"], ["updated_at", "2022-06-11 17:05:23.067805"]]
+  ↳ app/controllers/bookings_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/bookings_controller.rb:21:in `create'
+Redirected to http://127.0.0.1:3000/flights/3
+Completed 302 Found in 14ms (ActiveRecord: 1.7ms | Allocations: 7552)
+
+
+Started GET "/flights/3" for 127.0.0.1 at 2022-06-11 13:05:23 -0400
+Processing by FlightsController#show as TURBO_STREAM
+  Parameters: {"id"=>"3"}
+  [1m[36mFlight Load (0.1ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/flights_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering flights/show.html.erb within layouts/application
+  [1m[36mSeat Load (0.3ms)[0m  [1m[34mSELECT "seats".* FROM "seats" WHERE "seats"."flight_id" = ?[0m  [["flight_id", 3]]
+  ↳ app/views/flights/show.html.erb:30
+  Rendered flights/show.html.erb within layouts/application (Duration: 14.4ms | Allocations: 15274)
+  Rendered layout layouts/application.html.erb (Duration: 16.6ms | Allocations: 17508)
+Completed 200 OK in 18ms (Views: 16.6ms | ActiveRecord: 0.4ms | Allocations: 18332)
+
+
+Started GET "/bookings/new" for 127.0.0.1 at 2022-06-11 13:05:30 -0400
+Processing by BookingsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  Rendered bookings/new.html.erb within layouts/application (Duration: 3.9ms | Allocations: 1414)
+  Rendered layout layouts/application.html.erb (Duration: 9.8ms | Allocations: 3728)
+Completed 200 OK in 13ms (Views: 12.2ms | ActiveRecord: 0.0ms | Allocations: 4489)
+
+
+Started GET "/bookings/new" for 127.0.0.1 at 2022-06-11 13:05:35 -0400
+Processing by BookingsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  Rendered bookings/new.html.erb within layouts/application (Duration: 2.3ms | Allocations: 1250)
+  Rendered layout layouts/application.html.erb (Duration: 16.6ms | Allocations: 3508)
+Completed 200 OK in 18ms (Views: 17.4ms | ActiveRecord: 0.0ms | Allocations: 3841)
+
+
+Started GET "/bookings/" for 127.0.0.1 at 2022-06-11 13:05:35 -0400
+Processing by BookingsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/index.html.erb within layouts/application
+  [1m[36mBooking Load (0.6ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings"[0m
+  ↳ app/views/bookings/index.html.erb:4
+  Rendered bookings/index.html.erb within layouts/application (Duration: 8.0ms | Allocations: 3644)
+  Rendered layout layouts/application.html.erb (Duration: 8.3ms | Allocations: 3722)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.6ms | Allocations: 4027)
+
+
+  
+ActionView::Template::Error (undefined method `name' for #<Booking id: 1, user: "Seboso", seats: ["3A", " 4A"], created_at: "2022-06-11 17:02:25.178697000 +0000", updated_at: "2022-06-11 17:02:25.178697000 +0000">):
+    4:   <% @bookings.each do |booking| %>
+    5:     <li>
+    6:     <a href="/bookings/<%= booking.id %>">
+    7:       Vuelo <%= booking.name %>-<%= booking.seats %>
+    8:     </li>
+    9:   <% end %>
+   10: </ul>
+  
+app/views/bookings/index.html.erb:7
+app/views/bookings/index.html.erb:4
+Started GET "/bookings/index" for 127.0.0.1 at 2022-06-11 13:05:38 -0400
+  
+AbstractController::ActionNotFound (The action 'show' could not be found for BookingsController):
+  
+actionpack (7.0.3) lib/abstract_controller/base.rb:146:in `process'
+actionview (7.0.3) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.3) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.3) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.3) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.3) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.3) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.3) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.3) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.3) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.3.1) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3.1) lib/rack/etag.rb:27:in `call'
+rack (2.2.3.1) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3.1) lib/rack/head.rb:12:in `call'
+actionpack (7.0.3) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.3) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.3.1) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3.1) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/cookies.rb:697:in `call'
+activerecord (7.0.3) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.3) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.3) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.3) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:114:in `block in tagged'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:38:in `tagged'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:114:in `tagged'
+railties (7.0.3) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3.1) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3.1) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/server_timing.rb:20:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.3.1) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.3) lib/rails/engine.rb:530:in `call'
+puma (5.6.4) lib/puma/configuration.rb:252:in `call'
+puma (5.6.4) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.4) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.4) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.4) lib/puma/server.rb:441:in `process_client'
+puma (5.6.4) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/bookings/index" for 127.0.0.1 at 2022-06-11 13:05:43 -0400
+  
+AbstractController::ActionNotFound (The action 'show' could not be found for BookingsController):
+  
+actionpack (7.0.3) lib/abstract_controller/base.rb:146:in `process'
+actionview (7.0.3) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.3) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.3) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.3) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.3) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.3) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.3) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.3) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.3) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.3.1) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3.1) lib/rack/etag.rb:27:in `call'
+rack (2.2.3.1) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3.1) lib/rack/head.rb:12:in `call'
+actionpack (7.0.3) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.3) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.3.1) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3.1) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/cookies.rb:697:in `call'
+activerecord (7.0.3) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.3) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.3) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.3) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:114:in `block in tagged'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:38:in `tagged'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:114:in `tagged'
+railties (7.0.3) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3.1) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3.1) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/server_timing.rb:20:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.3.1) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.3) lib/rails/engine.rb:530:in `call'
+puma (5.6.4) lib/puma/configuration.rb:252:in `call'
+puma (5.6.4) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.4) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.4) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.4) lib/puma/server.rb:441:in `process_client'
+puma (5.6.4) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/bookings/" for 127.0.0.1 at 2022-06-11 13:05:43 -0400
+Processing by BookingsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/index.html.erb within layouts/application
+  [1m[36mBooking Load (0.2ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings"[0m
+  ↳ app/views/bookings/index.html.erb:4
+  Rendered bookings/index.html.erb within layouts/application (Duration: 6.5ms | Allocations: 3564)
+  Rendered layout layouts/application.html.erb (Duration: 6.8ms | Allocations: 3642)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.2ms | Allocations: 3937)
+
+
+  
+ActionView::Template::Error (undefined method `name' for #<Booking id: 1, user: "Seboso", seats: ["3A", " 4A"], created_at: "2022-06-11 17:02:25.178697000 +0000", updated_at: "2022-06-11 17:02:25.178697000 +0000">):
+    4:   <% @bookings.each do |booking| %>
+    5:     <li>
+    6:     <a href="/bookings/<%= booking.id %>">
+    7:       Vuelo <%= booking.name %>-<%= booking.seats %>
+    8:     </li>
+    9:   <% end %>
+   10: </ul>
+  
+app/views/bookings/index.html.erb:7
+app/views/bookings/index.html.erb:4
+Started GET "/bookings/all" for 127.0.0.1 at 2022-06-11 13:05:44 -0400
+  
+AbstractController::ActionNotFound (The action 'show' could not be found for BookingsController):
+  
+actionpack (7.0.3) lib/abstract_controller/base.rb:146:in `process'
+actionview (7.0.3) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.3) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.3) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.3) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.3) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.3) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.3) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.3) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.3) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.3.1) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3.1) lib/rack/etag.rb:27:in `call'
+rack (2.2.3.1) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3.1) lib/rack/head.rb:12:in `call'
+actionpack (7.0.3) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.3) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.3.1) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3.1) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/cookies.rb:697:in `call'
+activerecord (7.0.3) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.3) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.3) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.3) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:114:in `block in tagged'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:38:in `tagged'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:114:in `tagged'
+railties (7.0.3) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3.1) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3.1) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/server_timing.rb:20:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.3.1) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.3) lib/rails/engine.rb:530:in `call'
+puma (5.6.4) lib/puma/configuration.rb:252:in `call'
+puma (5.6.4) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.4) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.4) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.4) lib/puma/server.rb:441:in `process_client'
+puma (5.6.4) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/bookings/new" for 127.0.0.1 at 2022-06-11 13:06:13 -0400
+Processing by BookingsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  Rendered bookings/new.html.erb within layouts/application (Duration: 3.0ms | Allocations: 1240)
+  Rendered layout layouts/application.html.erb (Duration: 8.1ms | Allocations: 3498)
+Completed 200 OK in 11ms (Views: 9.6ms | ActiveRecord: 0.0ms | Allocations: 3830)
+
+
+Started GET "/bookings/" for 127.0.0.1 at 2022-06-11 13:06:13 -0400
+Processing by BookingsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/index.html.erb within layouts/application
+  [1m[36mBooking Load (0.2ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings"[0m
+  ↳ app/views/bookings/index.html.erb:4
+  Rendered bookings/index.html.erb within layouts/application (Duration: 9.0ms | Allocations: 3563)
+  Rendered layout layouts/application.html.erb (Duration: 9.2ms | Allocations: 3641)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.2ms | Allocations: 3936)
+
+
+  
+ActionView::Template::Error (undefined method `name' for #<Booking id: 1, user: "Seboso", seats: ["3A", " 4A"], created_at: "2022-06-11 17:02:25.178697000 +0000", updated_at: "2022-06-11 17:02:25.178697000 +0000">):
+    4:   <% @bookings.each do |booking| %>
+    5:     <li>
+    6:     <a href="/bookings/<%= booking.id %>">
+    7:       Vuelo <%= booking.name %>-<%= booking.seats %>
+    8:     </li>
+    9:   <% end %>
+   10: </ul>
+  
+app/views/bookings/index.html.erb:7
+app/views/bookings/index.html.erb:4
+Started GET "/bookings/" for 127.0.0.1 at 2022-06-11 13:07:38 -0400
+Processing by BookingsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/index.html.erb within layouts/application
+  Rendered bookings/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 1216)
+  Rendered layout layouts/application.html.erb (Duration: 2.7ms | Allocations: 1296)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms | Allocations: 2308)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <h1>Bookings</h1>
+
+<ul>
+  <% @bookings.each do |booking| %>
+    <li>
+    <a href="/bookings/<%= booking.id %>">
+      Vuelo <%= booking.name %><br>
+      <%= booking.seats.each do |seat| %>
+        <%= seat %>
+      <%end>  
+    </li>
+  <% end %>
+</ul>
+
+):
+1:    <h1>Bookings</h1>
+2:    
+3:    <ul>
+4:      <% @bookings.each do |booking| %>
+5:        <li>
+6:        <a href="/bookings/<%= booking.id %>">
+7:          Vuelo <%= booking.name %><br>
+8:          <%= booking.seats.each do |seat| %>
+9:            <%= seat %>
+10:          <%end>  
+11:        </li>
+12:      <% end %>
+13:    </ul>
+  
+app/views/bookings/index.html.erb:11: syntax error, unexpected '<'
+app/views/bookings/index.html.erb:13: unknown regexp option - l
+app/views/bookings/index.html.erb:16: unterminated string meets end of file
+app/views/bookings/index.html.erb:16: syntax error, unexpected end-of-input, expecting `end'
+app/views/bookings/index.html.erb:11: syntax error, unexpected '<'
+app/views/bookings/index.html.erb:13: unknown regexp option - l
+app/views/bookings/index.html.erb:16: unterminated string meets end of file
+app/views/bookings/index.html.erb:16: syntax error, unexpected end-of-input, expecting `end'
+app/views/bookings/index.html.erb:11: syntax error, unexpected '<'
+app/views/bookings/index.html.erb:13: unknown regexp option - l
+app/views/bookings/index.html.erb:16: unterminated string meets end of file
+app/views/bookings/index.html.erb:16: syntax error, unexpected end-of-input, expecting `end'
+app/views/bookings/index.html.erb:11: syntax error, unexpected '<'
+app/views/bookings/index.html.erb:13: unknown regexp option - l
+app/views/bookings/index.html.erb:16: unterminated string meets end of file
+app/views/bookings/index.html.erb:16: syntax error, unexpected end-of-input, expecting `end'
+app/views/bookings/index.html.erb:11: syntax error, unexpected '<'
+app/views/bookings/index.html.erb:13: unknown regexp option - l
+app/views/bookings/index.html.erb:16: unterminated string meets end of file
+app/views/bookings/index.html.erb:16: syntax error, unexpected end-of-input, expecting `end'
+app/views/bookings/index.html.erb:11: syntax error, unexpected '<'
+app/views/bookings/index.html.erb:13: unknown regexp option - l
+app/views/bookings/index.html.erb:16: unterminated string meets end of file
+app/views/bookings/index.html.erb:16: syntax error, unexpected end-of-input, expecting `end'
+Started GET "/bookings/" for 127.0.0.1 at 2022-06-11 13:09:02 -0400
+Processing by BookingsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/index.html.erb within layouts/application
+  Rendered bookings/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 1217)
+  Rendered layout layouts/application.html.erb (Duration: 2.1ms | Allocations: 1297)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms | Allocations: 2306)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <h1>Bookings</h1>
+
+<ul>
+  <% @bookings.each do |booking| %>
+    <li>
+    <ul>
+    <a href="/bookings/<%= booking.id %>">
+      Vuelo <%= booking.name %><br>
+      <%= booking.seats.each do |seat| %>
+        <li>
+        <%= seat %>
+        </li>
+      <%end>  
+    </ul>
+    </li>
+  <% end %>
+</ul>
+
+):
+1:    <h1>Bookings</h1>
+2:    
+3:    <ul>
+4:      <% @bookings.each do |booking| %>
+5:        <li>
+6:        <ul>
+7:        <a href="/bookings/<%= booking.id %>">
+8:          Vuelo <%= booking.name %><br>
+9:          <%= booking.seats.each do |seat| %>
+10:            <li>
+11:            <%= seat %>
+12:            </li>
+13:          <%end>  
+14:        </ul>
+15:        </li>
+16:      <% end %>
+17:    </ul>
+  
+app/views/bookings/index.html.erb:14: syntax error, unexpected '<'
+app/views/bookings/index.html.erb:15: unknown regexp option - l
+app/views/bookings/index.html.erb:16: syntax error, unexpected '<'
+app/views/bookings/index.html.erb:20: syntax error, unexpected end-of-input, expecting `end'
+app/views/bookings/index.html.erb:14: syntax error, unexpected '<'
+app/views/bookings/index.html.erb:15: unknown regexp option - l
+app/views/bookings/index.html.erb:16: syntax error, unexpected '<'
+app/views/bookings/index.html.erb:20: syntax error, unexpected end-of-input, expecting `end'
+app/views/bookings/index.html.erb:14: syntax error, unexpected '<'
+app/views/bookings/index.html.erb:15: unknown regexp option - l
+app/views/bookings/index.html.erb:16: syntax error, unexpected '<'
+app/views/bookings/index.html.erb:20: syntax error, unexpected end-of-input, expecting `end'
+app/views/bookings/index.html.erb:14: syntax error, unexpected '<'
+app/views/bookings/index.html.erb:15: unknown regexp option - l
+app/views/bookings/index.html.erb:16: syntax error, unexpected '<'
+app/views/bookings/index.html.erb:20: syntax error, unexpected end-of-input, expecting `end'
+app/views/bookings/index.html.erb:14: syntax error, unexpected '<'
+app/views/bookings/index.html.erb:15: unknown regexp option - l
+app/views/bookings/index.html.erb:16: syntax error, unexpected '<'
+app/views/bookings/index.html.erb:20: syntax error, unexpected end-of-input, expecting `end'
+app/views/bookings/index.html.erb:14: syntax error, unexpected '<'
+app/views/bookings/index.html.erb:15: unknown regexp option - l
+app/views/bookings/index.html.erb:16: syntax error, unexpected '<'
+app/views/bookings/index.html.erb:20: syntax error, unexpected end-of-input, expecting `end'
+Started GET "/bookings/" for 127.0.0.1 at 2022-06-11 13:10:03 -0400
+Processing by BookingsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/index.html.erb within layouts/application
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings"[0m
+  ↳ app/views/bookings/index.html.erb:4
+  Rendered bookings/index.html.erb within layouts/application (Duration: 10.5ms | Allocations: 3757)
+  Rendered layout layouts/application.html.erb (Duration: 10.9ms | Allocations: 3836)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.3ms | Allocations: 4844)
+
+
+  
+ActionView::Template::Error (undefined method `name' for #<Booking id: 1, user: "Seboso", seats: ["3A", " 4A"], created_at: "2022-06-11 17:02:25.178697000 +0000", updated_at: "2022-06-11 17:02:25.178697000 +0000">):
+    4:   <% @bookings.each do |booking| %>
+    5:     <li>
+    6:     <a href="/bookings/<%= booking.id %>">
+    7:       Reservador <%= booking.name %><br>
+    8:     </li>
+    9:   <% end %>
+   10: </ul>
+  
+app/views/bookings/index.html.erb:7
+app/views/bookings/index.html.erb:4
+Started GET "/bookings/" for 127.0.0.1 at 2022-06-11 13:10:16 -0400
+Processing by BookingsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/index.html.erb within layouts/application
+  [1m[36mBooking Load (0.2ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings"[0m
+  ↳ app/views/bookings/index.html.erb:4
+  Rendered bookings/index.html.erb within layouts/application (Duration: 3.8ms | Allocations: 776)
+  Rendered layout layouts/application.html.erb (Duration: 9.8ms | Allocations: 3486)
+Completed 200 OK in 15ms (Views: 13.3ms | ActiveRecord: 0.2ms | Allocations: 4529)
+
+
+Started GET "/bookings/" for 127.0.0.1 at 2022-06-11 13:10:34 -0400
+Processing by BookingsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/index.html.erb within layouts/application
+  [1m[36mBooking Load (0.2ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings"[0m
+  ↳ app/views/bookings/index.html.erb:4
+  Rendered bookings/index.html.erb within layouts/application (Duration: 3.5ms | Allocations: 938)
+  Rendered layout layouts/application.html.erb (Duration: 11.8ms | Allocations: 3642)
+Completed 200 OK in 16ms (Views: 14.5ms | ActiveRecord: 0.2ms | Allocations: 4685)
+
+
+Started GET "/bookings/1" for 127.0.0.1 at 2022-06-11 13:10:37 -0400
+  
+AbstractController::ActionNotFound (The action 'show' could not be found for BookingsController):
+  
+actionpack (7.0.3) lib/abstract_controller/base.rb:146:in `process'
+actionview (7.0.3) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.3) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.3) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.3) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.3) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.3) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.3) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.3) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.3) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.3.1) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3.1) lib/rack/etag.rb:27:in `call'
+rack (2.2.3.1) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3.1) lib/rack/head.rb:12:in `call'
+actionpack (7.0.3) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.3) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.3.1) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3.1) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/cookies.rb:697:in `call'
+activerecord (7.0.3) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.3) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.3) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.3) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:114:in `block in tagged'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:38:in `tagged'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:114:in `tagged'
+railties (7.0.3) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3.1) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3.1) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/server_timing.rb:20:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.3.1) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.3) lib/rails/engine.rb:530:in `call'
+puma (5.6.4) lib/puma/configuration.rb:252:in `call'
+puma (5.6.4) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.4) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.4) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.4) lib/puma/server.rb:441:in `process_client'
+puma (5.6.4) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/bookings/" for 127.0.0.1 at 2022-06-11 13:10:39 -0400
+Processing by BookingsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/index.html.erb within layouts/application
+  [1m[36mBooking Load (0.2ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings"[0m
+  ↳ app/views/bookings/index.html.erb:4
+  Rendered bookings/index.html.erb within layouts/application (Duration: 2.8ms | Allocations: 727)
+  Rendered layout layouts/application.html.erb (Duration: 9.1ms | Allocations: 3162)
+Completed 200 OK in 11ms (Views: 9.7ms | ActiveRecord: 0.2ms | Allocations: 3493)
+
+
+Started GET "/bookings/" for 127.0.0.1 at 2022-06-11 13:13:46 -0400
+Processing by BookingsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/index.html.erb within layouts/application
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings"[0m
+  ↳ app/views/bookings/index.html.erb:4
+  Rendered bookings/index.html.erb within layouts/application (Duration: 4.7ms | Allocations: 939)
+  Rendered layout layouts/application.html.erb (Duration: 11.9ms | Allocations: 3649)
+Completed 200 OK in 17ms (Views: 15.4ms | ActiveRecord: 0.3ms | Allocations: 4691)
+
+
+Started GET "/bookings/" for 127.0.0.1 at 2022-06-11 13:13:55 -0400
+Processing by BookingsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/index.html.erb within layouts/application
+  [1m[36mBooking Load (0.2ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings"[0m
+  ↳ app/views/bookings/index.html.erb:4
+  Rendered bookings/index.html.erb within layouts/application (Duration: 3.2ms | Allocations: 937)
+  Rendered layout layouts/application.html.erb (Duration: 9.3ms | Allocations: 3631)
+Completed 200 OK in 16ms (Views: 12.2ms | ActiveRecord: 0.2ms | Allocations: 4675)
+
+
+Started GET "/flights/3" for 127.0.0.1 at 2022-06-11 13:15:15 -0400
+Processing by FlightsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/flights_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering flights/show.html.erb within layouts/application
+  [1m[36mSeat Load (0.4ms)[0m  [1m[34mSELECT "seats".* FROM "seats" WHERE "seats"."flight_id" = ?[0m  [["flight_id", 3]]
+  ↳ app/views/flights/show.html.erb:30
+  Rendered flights/show.html.erb within layouts/application (Duration: 36.5ms | Allocations: 15762)
+  Rendered layout layouts/application.html.erb (Duration: 52.8ms | Allocations: 18293)
+Completed 200 OK in 59ms (Views: 54.6ms | ActiveRecord: 0.6ms | Allocations: 19775)
+
+
+Started GET "/flights/" for 127.0.0.1 at 2022-06-11 13:15:18 -0400
+Processing by FlightsController#index as HTML
+  [1m[36mBooking Load (0.1ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings"[0m
+  ↳ app/controllers/flights_controller.rb:5:in `puts'
+  Rendering layout layouts/application.html.erb
+  Rendering flights/index.html.erb within layouts/application
+  [1m[36mFlight Load (0.1ms)[0m  [1m[34mSELECT "flights".* FROM "flights"[0m
+  ↳ app/views/flights/index.html.erb:5
+  Rendered flights/index.html.erb within layouts/application (Duration: 19.9ms | Allocations: 1037)
+  Rendered layout layouts/application.html.erb (Duration: 22.7ms | Allocations: 3466)
+Completed 200 OK in 27ms (Views: 23.2ms | ActiveRecord: 0.3ms | Allocations: 4387)
+
+
