@@ -1,0 +1,23 @@
+<p>Usuario: <%= @booking.user %></p>
+
+<p>Asientos: <%= @booking.seats %></p>
+
+
+<%= form_with(model:@booking, method: :"patch", url: booking_path(@booking)) do |form| %>
+
+    <div>
+     <%= form.label :Asientos %><br>
+     <%= form.text_field :seats %>
+     <p>Tienes que seleccionar nuevamente todos los asientos y separarlos con punto y coma (";") (Ej: 1A;2A;14B) </p>
+   </div>
+  
+    <%=form.submit 'Editar', :class => "action" %>
+  
+  <% end %>
+
+  <ul>
+  <li><%= link_to "Destroy", booking_path(@booking), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
+</ul>

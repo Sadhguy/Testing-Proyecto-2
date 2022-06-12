@@ -1,9 +1,20 @@
 <h1>Bookings</h1>
 
+<%= form_with(model:@booking, method: :get, url: bookings_path) do |form| %>
+
+    <div class="field">
+        <%=form.label :Nombre %>
+        <%=form.text_field :user %>
+    </div>
+  
+    <%=form.submit 'Buscar', :class => "action" %>
+  
+  <% end %>
+
 <ul>
   <% @bookings.each do |booking| %>
     <li>
-    <a href="/bookings/<%= booking.id %>">
+    <a href="/bookings/<%= booking.id %>/edit">
       Reservador: <%= booking.user %> |
       Asientos: <%= booking.seats %>
     </li>
