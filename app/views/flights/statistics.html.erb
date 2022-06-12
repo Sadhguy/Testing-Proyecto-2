@@ -5,3 +5,12 @@
 <p>Esperando: <%= @future %> (<%= (100*(@future.to_d / @all)).round(2) %>%)</p>
 
 <p>Ocupación promedio <%= @static_taken.round(2) %>%</p>
+
+<ul>
+  <% @flights.each do |flight| %>
+    <li>
+    <a href="/flights/<%= flight.id %>"> N° de vuelo: 
+    <%= flight.id %> Ocupación: <%= (ocupation(flight.id)*100).round(2) %>%
+    </li>
+  <% end %>
+</ul>
