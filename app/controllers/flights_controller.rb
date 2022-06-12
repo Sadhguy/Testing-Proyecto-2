@@ -35,13 +35,30 @@ class FlightsController < ApplicationController
     redirect_to root_path, status: :see_other
   end
 
+
+  def ocupation(id)
+    puts id
+    @flight = Flight.find(id)
+    @taken = 0
+    @seats = @flight.seats.count
+    for seat in @flight.seats
+      if !seat.disponibility
+        @taken += 1
+      end
+    end
+    @ocupation = @taken.to_f / @seats
+    return @ocupation
+  end
+  helper_method :ocupation
+
   def statistics
     @all = Flight.count
     @past = Flight.where("date < :datenow", datenow: Date.today).count
     @future = Flight.where("date > :datenow", datenow: Date.today).count
     @taken = 0
     @all_seats = 0
-    for flight in Flight.all
+    @flights = Flight.all
+    for flight in @flights
       for seat in flight.seats
         if !seat.disponibility
           @taken += 1
