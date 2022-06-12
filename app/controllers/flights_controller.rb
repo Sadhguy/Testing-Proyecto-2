@@ -34,6 +34,24 @@ class FlightsController < ApplicationController
 
     redirect_to root_path, status: :see_other
   end
+
+  def statistics
+    @all = Flight.count
+    @past = Flight.where("date < :datenow", datenow: Date.today).count
+    @future = Flight.where("date > :datenow", datenow: Date.today).count
+    @taken = 0
+    @all_seats = 0
+    for flight in Flight.all
+      for seat in flight.seats
+        if !seat.disponibility
+          @taken += 1
+        end
+        @all_seats += 1
+      end
+    end
+    @static_taken = @taken.to_f / @all_seats
+  end
+
   private
     def flight_params
       params.require(:flight).permit(:origin, :destiny, :date, :time)

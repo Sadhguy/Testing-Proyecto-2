@@ -1,46 +1,28 @@
-# <h1>Booking</h1>
+<h1>Booking</h1>
 
-# <%= form_with model: @booking do |form| %>
-#   <div>
-#     <%= form.label :IdFlight %><br>
-#     <%= form.text_field :IdFlight %>
-#   </div>
-
-#   <div>
-#     <%= form.label :Nombre %><br>
-#     <%= form.text_field :user %>
-#     <% @booking.errors.full_messages_for(:user).each do |message|%>
-#         <div><%= message %></div>
-#       <% end %>
-#   </div>
-
-#   <div>
-#     <%= form.label :Asientos %><br>
-#     <%= form.text_field :seats %>
-#     <% @booking.errors.full_messages_for(:seats).each do |message|%>
-#         <div><%= message %></div>
-#       <% end %>
-#   </div>
-
-#   <div>
-#     <%= form.submit %>
-#   </div>
-# <% end %>
-
-<form action="/articles" accept-charset="UTF-8" method="post">
-  <input type="hidden" name="authenticity_token" value="...">
-
+<%= form_with model: @booking do |form| %>
   <div>
-    <label for="article_title">Title</label><br>
-    <input type="text" name="article[title]" id="article_title">
+    <%= form.label :IdFlight %><br>
+    <%= form.text_field :IdFlight %>
   </div>
 
   <div>
-    <label for="article_body">Body</label><br>
-    <textarea name="article[body]" id="article_body"></textarea>
+    <%= form.label :Nombre %><br>
+    <%= form.text_field :user %>
+    <% @booking.errors.full_messages_for(:user).each do |message|%>
+        <div><%= message %></div>
+      <% end %>
   </div>
 
   <div>
-    <input type="submit" name="commit" value="Create Article" data-disable-with="Create Article">
+    <%= form.label :Asientos %><br>
+    <%= form.text_field :seats %>
+    <% @booking.errors.full_messages_for(:seats).each do |message|%>
+        <div><%= message %></div>
+      <% end %>
   </div>
-</form>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
