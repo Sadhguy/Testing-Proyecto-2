@@ -22397,3 +22397,19 @@ Processing by FlightsController#statistics as HTML
 Completed 200 OK in 60ms (Views: 24.6ms | ActiveRecord: 6.2ms | Allocations: 46508)
 
 
+Started GET "/flights/8" for 127.0.0.1 at 2022-06-12 19:45:59 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by FlightsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mFlight Load (0.0ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/flights_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering flights/show.html.erb within layouts/application
+  [1m[36mSeat Load (0.4ms)[0m  [1m[34mSELECT "seats".* FROM "seats" WHERE "seats"."flight_id" = ?[0m  [["flight_id", 8]]
+  ↳ app/views/flights/show.html.erb:30
+  Rendered flights/show.html.erb within layouts/application (Duration: 18.0ms | Allocations: 29939)
+  Rendered layout layouts/application.html.erb (Duration: 36.2ms | Allocations: 65120)
+Completed 200 OK in 48ms (Views: 37.2ms | ActiveRecord: 0.8ms | Allocations: 81007)
+
+
