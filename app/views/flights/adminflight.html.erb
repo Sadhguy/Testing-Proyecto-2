@@ -1,5 +1,5 @@
 <div class="container">
-
+  <% @flight = show %>
   <p>Vuelo: <%= @flight.id %></p>
 
   <p>Origen: <%= @flight.origin %></p>
@@ -712,4 +712,13 @@
         
     </tbody>
     </table>
+
+
+
+  <ul>
+    <li><%= link_to "Destroy", flight_path(@flight), data: {
+                      turbo_method: :delete,
+                      turbo_confirm: "Are you sure?"
+                    } %></li>
+  </ul>
 </div>
