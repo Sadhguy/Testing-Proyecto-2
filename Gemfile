@@ -70,3 +70,9 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "rspec", "~> 3.11"
+
+gem "rspec-rails", "~> 5.1"
+
+gem "simplecov", "~> 0.21.2"
