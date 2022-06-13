@@ -1,43 +1,724 @@
-<p>Vuelo: <%= @flight.id %></p>
+<div class="container">
 
-<p>Origen: <%= @flight.origin %></p>
+  <p>Vuelo: <%= @flight.id %></p>
 
-<p>Destino: <%= @flight.destiny %></p>
+  <p>Origen: <%= @flight.origin %></p>
 
-<p>Fecha: <%= @flight.date %></p>
+  <p>Destino: <%= @flight.destiny %></p>
 
-<p>Fecha: <%= @flight.time.strftime("%I:%M%p") %></p>
+  <p>Fecha: <%= @flight.date %></p>
 
-<h3>Reserva</h3>
-<%= form_with(model:@booking, method: :post, url: create_booking_path) do |form| %>
-  <div class="field">
-        <%= form.hidden_field :flight_id, :value => @flight.id %>
+  <p>Hora: <%= @flight.time.strftime("%I:%M%p") %></p>
+
+  <h3 class="title">Reserva</h3>
+  <%= form_with(model:@booking, method: :post, url: create_booking_path) do |form| %>
+    <div class="field">
+          <%= form.hidden_field :flight_id, :value => @flight.id %>
+      </div>
+    <div>
+      <%= form.label :Nombre %><br>
+      <%= form.text_field :user %>
     </div>
-   <div>
-     <%= form.label :Nombre %><br>
-     <%= form.text_field :user %>
-   </div>
-   <div>
-     <%= form.label :Asientos %><br>
-     <%= form.text_field :seats %>
-     <p>Si quieres elegir más de un asiento debes separarlos con punto y coma (";") (Ej: 1A;2A;14B) </p>
-   </div>
-   <div>
-     <%= form.submit %>
-   </div>
- <% end %>
-
-<p>Asientos: <%= @flight.seats.each do |seat| %>
-    <li>
-      <%= seat.row %><%= seat.column%>
-      <%= seat.disponibility %>
-    </li>
+    <div>
+      <%= form.label :Asientos %><br>
+      <%= form.text_field :seats %>
+      <p>Si quieres elegir más de un asiento debes separarlos con punto y coma (";") (Ej: 1A;2A;14B) </p>
+    </div>
+    <div>
+      <%= form.submit %>
+    </div>
   <% end %>
-</p>
 
-<ul>
-  <li><%= link_to "Destroy", flight_path(@flight), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  } %></li>
-</ul>
+  <table class="table">
+    <thead>
+      <tr>
+        <td></td>
+        <td>A</td>
+        <td>B</td>
+        <td>C</td>
+        <td></td>
+        <td>D</td>
+        <td>E</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <% if @flight.seats.find_by(row: 1, column: 'A') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 1, column: 'B') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 1, column: 'C') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <td></td>
+        <% if @flight.seats.find_by(row: 1, column: 'D') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 1, column: 'E') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>2</td>
+        <% if @flight.seats.find_by(row: 2, column: 'A') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 2, column: 'B') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 2, column: 'C') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <td></td>
+        <% if @flight.seats.find_by(row: 2, column: 'D') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 2, column: 'E') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>3</td>
+        <% if @flight.seats.find_by(row: 3, column: 'A') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 3, column: 'B') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 3, column: 'C') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <td></td>
+        <% if @flight.seats.find_by(row: 3, column: 'D') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 3, column: 'E') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>4</td>
+        <% if @flight.seats.find_by(row: 4, column: 'A') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 4, column: 'B') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 4, column: 'C') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <td></td>
+        <% if @flight.seats.find_by(row: 4, column: 'D') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 4, column: 'E') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>5</td>
+        <% if @flight.seats.find_by(row: 5, column: 'A') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 5, column: 'B') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 5, column: 'C') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <td></td>
+        <% if @flight.seats.find_by(row: 5, column: 'D') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 5, column: 'E') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>6</td>
+        <% if @flight.seats.find_by(row: 6, column: 'A') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 6, column: 'B') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 6, column: 'C') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <td></td>
+        <% if @flight.seats.find_by(row: 6, column: 'D') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 6, column: 'E') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>7</td>
+        <% if @flight.seats.find_by(row: 7, column: 'A') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 7, column: 'B') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 7, column: 'C') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <td></td>
+        <% if @flight.seats.find_by(row: 7, column: 'D') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 7, column: 'E') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>8</td>
+        <% if @flight.seats.find_by(row: 8, column: 'A') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 8, column: 'B') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 8, column: 'C') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <td></td>
+        <% if @flight.seats.find_by(row: 8, column: 'D') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 8, column: 'E') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>9</td>
+        <% if @flight.seats.find_by(row: 9, column: 'A') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 9, column: 'B') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 9, column: 'C') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <td></td>
+        <% if @flight.seats.find_by(row: 9, column: 'D') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 9, column: 'E') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>10</td>
+        <% if @flight.seats.find_by(row: 10, column: 'A') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 10, column: 'B') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 10, column: 'C') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <td></td>
+        <% if @flight.seats.find_by(row: 10, column: 'D') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 10, column: 'E') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>11</td>
+        <% if @flight.seats.find_by(row: 11, column: 'A') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 11, column: 'B') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 11, column: 'C') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <td></td>
+        <% if @flight.seats.find_by(row: 11, column: 'D') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 11, column: 'E') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>12</td>
+        <% if @flight.seats.find_by(row: 12, column: 'A') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 12, column: 'B') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 12, column: 'C') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <td></td>
+        <% if @flight.seats.find_by(row: 12, column: 'D') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 12, column: 'E') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>13</td>
+        <% if @flight.seats.find_by(row: 13, column: 'A') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 13, column: 'B') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 13, column: 'C') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <td></td>
+        <% if @flight.seats.find_by(row: 13, column: 'D') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 13, column: 'E') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>14</td>
+        <% if @flight.seats.find_by(row: 14, column: 'A') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 14, column: 'B') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 14, column: 'C') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <td></td>
+        <% if @flight.seats.find_by(row: 14, column: 'D') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 14, column: 'E') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>15</td>
+        <% if @flight.seats.find_by(row: 15, column: 'A') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 15, column: 'B') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 15, column: 'C') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <td></td>
+        <% if @flight.seats.find_by(row: 15, column: 'D') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 15, column: 'E') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>16</td>
+        <% if @flight.seats.find_by(row: 16, column: 'A') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 16, column: 'B') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 16, column: 'C') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <td></td>
+        <% if @flight.seats.find_by(row: 16, column: 'D') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 16, column: 'E') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>17</td>
+        <% if @flight.seats.find_by(row: 17, column: 'A') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 17, column: 'B') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 17, column: 'C') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <td></td>
+        <% if @flight.seats.find_by(row: 17, column: 'D') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 17, column: 'E') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>18</td>
+        <% if @flight.seats.find_by(row: 18, column: 'A') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 18, column: 'B') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 18, column: 'C') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <td></td>
+        <% if @flight.seats.find_by(row: 18, column: 'D') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 18, column: 'E') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>19</td>
+        <% if @flight.seats.find_by(row: 19, column: 'A') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 19, column: 'B') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 19, column: 'C') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <td></td>
+        <% if @flight.seats.find_by(row: 19, column: 'D') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 19, column: 'E') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>20</td>
+        <% if @flight.seats.find_by(row: 20, column: 'A') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 20, column: 'B') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 20, column: 'C') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <td></td>
+        <% if @flight.seats.find_by(row: 20, column: 'D') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 20, column: 'E') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>21</td>
+        <% if @flight.seats.find_by(row: 21, column: 'A') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 21, column: 'B') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 21, column: 'C') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <td></td>
+        <% if @flight.seats.find_by(row: 21, column: 'D') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 21, column: 'E') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>22</td>
+        <% if @flight.seats.find_by(row: 22, column: 'A') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 22, column: 'B') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 22, column: 'C') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <td></td>
+        <% if @flight.seats.find_by(row: 22, column: 'D') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 22, column: 'E') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>23</td>
+        <% if @flight.seats.find_by(row: 23, column: 'A') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 23, column: 'B') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 23, column: 'C') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <td></td>
+        <% if @flight.seats.find_by(row: 23, column: 'D') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+        <% if @flight.seats.find_by(row: 23, column: 'E') .disponibility %>
+          <td></td>
+        <% else %>
+          <td style="background-color:red;"></td>
+        <% end %>
+      </tr>
+        
+    </tbody>
+    </table>
+
+
+
+  <ul>
+    <li><%= link_to "Destroy", flight_path(@flight), data: {
+                      turbo_method: :delete,
+                      turbo_confirm: "Are you sure?"
+                    } %></li>
+  </ul>
+</div>
