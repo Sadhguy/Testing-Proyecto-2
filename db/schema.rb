@@ -33,13 +33,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_12_224341) do
   end
 
   create_table "seats", force: :cascade do |t|
+    t.bigint "flight_id"
     t.integer "row"
     t.string "column"
     t.boolean "disponibility"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "flight_id"
     t.index ["flight_id"], name: "index_seats_on_flight_id"
   end
 
+  add_foreign_key "seats", "flights"
 end
