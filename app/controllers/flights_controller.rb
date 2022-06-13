@@ -2,11 +2,13 @@ class FlightsController < ApplicationController
   def index
     @flights = Flight.where("destiny like :destiny and origin like :origin and date::text like :date and time::text like :time", destiny: "%#{params[:destiny]}%", origin: "%#{params[:origin]}%", date: "%#{params[:date]}%", time: "%#{params[:time]}%")
   end
+  helper_method :index
 
   def show
     @flight = Flight.find(params[:id])
   end
-
+  helper_method :show
+  
   def new
     @flight = Flight.new
   end

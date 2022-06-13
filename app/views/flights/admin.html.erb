@@ -1,6 +1,5 @@
-
 <h1>Flights</h1>
-
+<% @flights = index %>
 <%= form_with(model:@flight, method: :get, url: flights_path) do |form| %>
 
   <div class="field">
@@ -30,10 +29,12 @@
 <ul>
   <% @flights.each do |flight| %>
     <li>
-    <a href="/flights/<%= flight.id %>">
+    <a href="/flights/<%= flight.id %>/admin">
       Vuelo <%= flight.origin %>-<%= flight.destiny %>
       <%= flight.date %>
       <%= flight.time.strftime("%I:%M%p") %>
     </li>
   <% end %>
 </ul>
+
+<%= link_to "New Flight", new_flight_path %>
