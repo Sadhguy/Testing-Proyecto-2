@@ -1,6 +1,6 @@
 class FlightsController < ApplicationController
   def index
-    @flights = Flight.where("destiny like :destiny and origin like :origin and date like :date and time like :time", destiny: "%#{params[:destiny]}%", origin: "%#{params[:origin]}%", date: "%#{params[:date]}%", time: "%#{params[:time]}%")
+    @flights = Flight.where("destiny like :destiny and origin like :origin and date::text like :date and time::text like :time", destiny: "%#{params[:destiny]}%", origin: "%#{params[:origin]}%", date: "%#{params[:date]}%", time: "%#{params[:time]}%")
   end
 
   def show
@@ -58,6 +58,7 @@ class FlightsController < ApplicationController
     @taken = 0
     @all_seats = 0
     @flights = Flight.all
+    @static_taken = 0
     for flight in @flights
       for seat in flight.seats
         if !seat.disponibility
@@ -65,8 +66,9 @@ class FlightsController < ApplicationController
         end
         @all_seats += 1
       end
+      @static_taken += ocupation(flight.id)
     end
-    @static_taken = @taken.to_f / @all_seats
+    @static_taken = @static_taken/@all 
   end
 
   private
