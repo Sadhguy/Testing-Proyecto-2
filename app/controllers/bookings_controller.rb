@@ -4,7 +4,31 @@ class BookingsController < ApplicationController
   end
 
   def index
-    @bookings = Booking.all
+    @bookings = Booking.where("user like :user", user: "%#{params[:user]}%")
+  end
+
+  def edit
+    @booking = Booking.find(params[:id])
+  end
+
+  def update
+    new_seats = params[:booking][:seats].split(";")
+    @booking = Booking.find(params[:id])
+    old_seats = @booking.seats
+
+    if @booking.update(seats: new_seats)
+      for seat in old_seats do
+        sit = Seat.find_by(flight: @booking.flight, row: seat[0..seat.length - 2], column: seat[seat.length - 1])
+        sit.update(disponibility: true)
+      end
+      for seat in new_seats do
+        sit = Seat.find_by(flight: @booking.flight, row: seat[0..seat.length - 2], column: seat[seat.length - 1])
+        sit.update(disponibility: false)
+      end
+      redirect_to @booking
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def create
@@ -16,21 +40,19 @@ class BookingsController < ApplicationController
           seat = Seat.update(seat.id, disponibility: false)
         end
       end
-      @booking = Booking.new(user: params[:user], seats: seats)
-      puts @booking
+      @booking = Booking.new(user: params[:user], seats: seats, flight: params[:flight_id])
       if @booking.save
         redirect_to "/flights/#{params[:flight_id]}"
       else
-        render :new, status: :unprocessable_entity
+        render :index, status: :unprocessable_entity
       end
     end
+  end
 
-    #puts(@booking.seats)
-    
-    #if @booking.save
-    #  redirect_to @booking
-    #else
-    #  render :new, status: :unprocessable_entity
-    #end
+  def destroy
+    @booking = Booking.find(params[:id])
+    @booking.destroy
+
+    redirect_to root_path, status: :see_other
   end
 end
