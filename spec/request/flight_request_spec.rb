@@ -15,6 +15,16 @@ class FlightTest < ActiveSupport::TestCase
       }
 
       @flight = Flight.create!(@attr_flight)
+      @seat1 = @flight.seats.new(row:1, column:"A", disponibility:true)
+      @seat2 = @flight.seats.new(row:2, column:"A", disponibility:true)
+      @seat3 = @flight.seats.new(row:3, column:"A", disponibility:true)
+      @seat4 = @flight.seats.new(row:4, column:"A", disponibility:false)
+      @seat5 = @flight.seats.new(row:5, column:"A", disponibility:false)
+      @seat1.save
+      @seat2.save
+      @seat3.save
+      @seat4.save
+      @seat5.save
 
       
       @attr_valid = {
@@ -74,8 +84,16 @@ class FlightTest < ActiveSupport::TestCase
       it "deberia destruirse el vuelo correspondiente" do
         @flight2 = Flight.create!(@attr_valid)
         expect do
-          delete "/flights/#{@flight.id}"
+          delete "/flights/#{@flight2.id}"
         end.to change(Flight, :count).by(-1)   
+      end
+    end
+
+
+    describe "statistics" do 
+      it "should return a successful request" do 
+          get "/flights/statistics"
+          expect(response).to have_http_status(:ok)
       end
     end
   end

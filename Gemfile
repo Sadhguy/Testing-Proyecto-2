@@ -76,3 +76,5 @@ gem "rspec", "~> 3.11"
 gem "rspec-rails", "~> 5.1"
 
 gem "simplecov", "~> 0.21.2"
+
+gem "database_cleaner", "~> 2.0"
