@@ -56,21 +56,20 @@ class BooktTest < ActiveSupport::TestCase
 
     describe "create" do
       describe "si hay usuario" do
-        @attr_flight = {
+        it "deberia crearse un booking con atributos validos" do
+          @attr_flight = {
           origin: "scl",
           destiny: "syd",
           date: "2022-07-10",
           time: "00:30"
-        }
-        @flight3 = Flight.create!(@attr_flight)
-        @seat9 = @flight3.seats.new(row:1, column:"A", disponibility:true)
-        @seat10 = @flight3.seats.new(row:2, column:"A", disponibility:true)
-        @seat9.save
-        @seat10.save
-        id_viaje = @flight3.id
-        it "deberia crearse un booking con atributos validos" do
+          }
+          @flight3 = Flight.create!(@attr_flight)
+          @seat9 = @flight3.seats.new(row:1, column:"A", disponibility:true)
+          @seat10 = @flight3.seats.new(row:2, column:"A", disponibility:true)
+          @seat9.save
+          @seat10.save
           expect do
-            post "/bookings", params: { seats: "1A;2A", user: "Andres", flight_id: id_viaje }
+            post "/bookings", params: { seats: "1A;2A", user: "Andres", flight_id: @flight3.id }
           end.to change(Booking, :count).by(1)   
         end
       end
