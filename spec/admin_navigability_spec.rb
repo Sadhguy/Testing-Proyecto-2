@@ -45,7 +45,11 @@ RSpec.describe 'Filter Flights', type: :system do
       end
 
       @booking = Booking.create!(user: "Pedro", seats: ["1A","2A","3A","4A","5A","6A","7A","8A","9A","10A"], flight: @flight_1.id)
-      # @booking = Booking.create!(user: "Pedro", seats: ["1B","2B","3B","4B","5B","6B","7B","8B","9B","10B"], flight: @flight_1.id)
+
+      ["1A","2A","3A","4A","5A","6A","7A","8A","9A","10A"].each do |seat|
+        seat1 = Seat.find_by(flight: @flight_1.id, row: seat[0..seat.length - 2], column: seat[seat.length - 1])
+        seat1 = Seat.update(seat1.id, disponibility: false)
+      end
 
       visit new_flight_path
       expect(page).to have_content('New flight')
@@ -68,6 +72,11 @@ RSpec.describe 'Filter Flights', type: :system do
 
       visit flight_statistics_path
       expect(page).to have_content('Cantidad de vuelos: 2')
+      expect(page).to have_content('Salidos: 0 (0.0%')
+      expect(page).to have_content('Esperando: 2 (100.0%)')
+      expect(page).to have_content('Ocupación promedio 4.0%')
+      expect(page).to have_content('N° de vuelo: 1 Ocupación: 8.0%')
+      expect(page).to have_content('N° de vuelo: 2 Ocupación: 0.0%')
       expect(page).to have_current_path(flight_statistics_path)
 
       visit bookings_path

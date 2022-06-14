@@ -120,28 +120,6 @@ class BooktTest < ActiveSupport::TestCase
         end
     end
 
-    # describe "update" do 
-    #   it "should return a successful request" do 
-    #     attr_flight = {
-    #     origin: "scl",
-    #     destiny: "syd",
-    #     date: "2022-07-10",
-    #     time: "00:30"
-    #     }
-    #     @flight7 = Flight.create!(@attr_flight)
-    #     @seat6 = @flight7.seats.new(row:1, column:"A", disponibility:true)
-    #     @seat7 = @flight5.seats.new(row:2, column:"A", disponibility:true)
-    #     @seat8 = @flight5.seats.new(row:3, column:"A", disponibility:true)
-    #     @seat6.save
-    #     @seat7.save
-    #     @seat8.save
-    #     @booking7 = Booking.create!(user: "Felipe", seats: ["1A","2A"], flight: @flight7.id)
-    #     id_book = @booking7.id
-    #       patch "/bookings/#{id_book}" params: { booking: {seats: "3A"} }
-    #       expect(response).to have_http_status(:ok)
-    #   end
-    # end
-
     describe "destroy" do
       it "deberia destruirse el booking correspondiente" do
         @attr_flight = {
