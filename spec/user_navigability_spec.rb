@@ -42,18 +42,14 @@ RSpec.describe 'Filter Flights', type: :system do
       expect(page).to have_content('Vuelo Lima-Madrid 2023-01-01 12:00PM')
       expect(page).to have_current_path(root_path)
       click_on 'Vuelo Santiago-Madrid 2023-01-01 12:00PM'
-      sleep(1)
 
-      expect(page).to have_current_path(flight_path(1))
+      expect(page).to have_current_path(flight_path(@flight_1.id))
       expect(page).to have_content('Origen: Santiago')
       expect(page).to have_content('Destino: Madrid')
       expect(page).to have_content('Fecha: 2023-01-01')
       expect(page).to have_content('Hora: 12:00PM')
       expect(page).to have_content('Reserva')
       expect(page).to have_content('Si quieres elegir más de un asiento debes separarlos con punto y coma (";") (Ej: 1A;2A;14B)')
-      
-
-
 
     end
   end

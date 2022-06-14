@@ -51,7 +51,26 @@ class FlightTest < ActiveSupport::TestCase
     end
 
     describe "show" do 
-      it "should return a successful request" do 
+        it "should return a successful request" do 
+          @attr_flight = {
+          origin: "scl",
+          destiny: "syd",
+          date: "2022-07-10",
+          time: "00:30"
+          }
+        @flight = Flight.create!(@attr_flight)
+        for i in 0..24
+          asiento1 = @flight.seats.new(row:i, column:"A", disponibility:true)
+          asiento1.save
+          asiento2 = @flight.seats.new(row:i, column:"B", disponibility:true)
+          asiento2.save
+          asiento3 = @flight.seats.new(row:i, column:"C", disponibility:true)
+          asiento3.save
+          asiento4 = @flight.seats.new(row:i, column:"D", disponibility:true)
+          asiento4.save
+          asiento5 = @flight.seats.new(row:i, column:"E", disponibility:true)
+          asiento5.save
+        end
           get "/flights/#{@flight.id}"
           expect(response).to have_http_status(:ok)
       end
