@@ -97,35 +97,50 @@ class BooktTest < ActiveSupport::TestCase
 
     end
 
+    
     describe "update" do
-      describe "si hay usuario" do
-        @attr_flight = {
+        it "deberia editarse un booking con atributos validos" do
+          @attr_flight = {
           origin: "scl",
           destiny: "syd",
           date: "2022-07-10",
           time: "00:30"
-        }
-
-        @flight2 = Flight.create!(@attr_flight)
-        @seat6 = @flight2.seats.new(row:1, column:"A", disponibility:true)
-        @seat7 = @flight2.seats.new(row:2, column:"A", disponibility:true)
-        @seat8 = @flight2.seats.new(row:3, column:"A", disponibility:true)
-        @seat6.save
-        @seat7.save
-        @seat8.save
-        @booking2 = Booking.create!(user: "Felipe", seats: ["1A","2A"], flight: @flight2.id)
-        id_book = @booking2.id
-        it "deberia editarse un booking con atributos validos" do
+          }
+          @flight2 = Flight.create!(@attr_flight)
+          @seat6 = @flight2.seats.new(row:1, column:"A", disponibility:true)
+          @seat7 = @flight2.seats.new(row:2, column:"A", disponibility:true)
+          @seat8 = @flight2.seats.new(row:3, column:"A", disponibility:true)
+          @seat6.save
+          @seat7.save
+          @seat8.save
+          @booking2 = Booking.create!(user: "Felipe", seats: ["1A","2A"], flight: @flight2.id)
+          id_book = @booking2.id
           patch "/bookings/#{id_book}", params: { booking: {seats: "3A"} }
           expect(response).to have_http_status(:found)
         end
-
-        # it "no deberia editarse un booking con atributos invalidos" do
-        #   patch "/bookings/#{id_book}", params: { booking: {seats: "1AM2A"} }
-        #   expect(response).to have_http_status(:found)
-        # end
-      end
     end
+
+    # describe "update" do 
+    #   it "should return a successful request" do 
+    #     attr_flight = {
+    #     origin: "scl",
+    #     destiny: "syd",
+    #     date: "2022-07-10",
+    #     time: "00:30"
+    #     }
+    #     @flight7 = Flight.create!(@attr_flight)
+    #     @seat6 = @flight7.seats.new(row:1, column:"A", disponibility:true)
+    #     @seat7 = @flight5.seats.new(row:2, column:"A", disponibility:true)
+    #     @seat8 = @flight5.seats.new(row:3, column:"A", disponibility:true)
+    #     @seat6.save
+    #     @seat7.save
+    #     @seat8.save
+    #     @booking7 = Booking.create!(user: "Felipe", seats: ["1A","2A"], flight: @flight7.id)
+    #     id_book = @booking7.id
+    #       patch "/bookings/#{id_book}" params: { booking: {seats: "3A"} }
+    #       expect(response).to have_http_status(:ok)
+    #   end
+    # end
 
     describe "destroy" do
       it "deberia destruirse el booking correspondiente" do
