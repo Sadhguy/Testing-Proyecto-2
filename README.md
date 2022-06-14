@@ -14,8 +14,5 @@ Para correr el proyecto:
 5. ``bin/rails db:migrate`` 
 6. ``bin/rails server``
 
-Para correr los test unitarios:
+Para correr los test unitarios y Capybara:
 ``bundle exec rspec``
-
-Para correr los test con Capybara:
-``rspec <ruta>``, por ejemplo ``rspec ./spec/create_flight_spec.rb``
