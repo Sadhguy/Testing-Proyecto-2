@@ -56,7 +56,6 @@ class BooktTest < ActiveSupport::TestCase
 
     describe "create" do
       describe "si hay usuario" do
-        id_viaje = @flight3.id
         it "deberia crearse un booking con atributos validos" do
           @attr_flight = {
           origin: "scl",
