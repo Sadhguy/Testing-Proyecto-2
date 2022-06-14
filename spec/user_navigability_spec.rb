@@ -50,9 +50,6 @@ RSpec.describe 'Filter Flights', type: :system do
       expect(page).to have_content('Hora: 12:00PM')
       expect(page).to have_content('Reserva')
       expect(page).to have_content('Si quieres elegir más de un asiento debes separarlos con punto y coma (";") (Ej: 1A;2A;14B)')
-      
-
-
 
     end
   end

@@ -11,7 +11,7 @@ RSpec.describe 'Create Flights', type: :system do
       fill_in 'flight[date]', with: '01-01-2023'
       fill_in 'flight[time]', with: '12:00'
       click_button 'Create Flight'
-      
+
       expect(page).to have_current_path(flight_path(3))
       expect(page).to have_content('Origen: Santiago')
       expect(page).to have_content('Destino: Madrid')
