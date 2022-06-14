@@ -1,7 +1,9 @@
 # Testing-Proyecto-2
 
 Link a producción: https://testing-proyecto2.herokuapp.com/
+
 Versión de Ruby: ``3.0.0``
+
 Versión de Rails: ``7.0.3``
 
 Para correr el proyecto: 
