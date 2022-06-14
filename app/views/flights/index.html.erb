@@ -29,11 +29,13 @@
 
 <ul>
   <% @flights.each do |flight| %>
-    <li>
-    <a href="/flights/<%= flight.id %>">
-      Vuelo <%= flight.origin %>-<%= flight.destiny %>
-      <%= flight.date %>
-      <%= flight.time.strftime("%I:%M%p") %>
-    </li>
+    <% if "#{flight.date} #{flight.time}".to_datetime > DateTime.now %>
+      <li>
+      <a href="/flights/<%= flight.id %>">
+        Vuelo <%= flight.origin %>-<%= flight.destiny %>
+        <%= flight.date %>
+        <%= flight.time.strftime("%I:%M%p") %>
+      </li>
+    <% end %>
   <% end %>
 </ul>
